@@ -5,6 +5,9 @@ import numpy as np
 import subprocess
 import os
 
+
+hugging_face_token=""
+
 def trim_audio(input_file, output_file, duration=600, delete_files=None):
     """Trim the audio/video file to the first `duration` seconds (default: 10 minutes = 600s).
     Deletes specified files before running ffmpeg.
@@ -64,7 +67,7 @@ def diarize_audio(audio_file):
     """Perform speaker diarization using Pyannote"""
     pipeline = Pipeline.from_pretrained(
     "pyannote/speaker-diarization@2.1",
-    use_auth_token="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")
+    use_auth_token=hugging_face_token)
 
     # Replace "${AUDIO_FILE_PATH}" with the path to your audio file
     diarization = pipeline(audio_file)
