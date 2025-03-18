@@ -1,0 +1,161 @@
+[Unknown]  All have to read the documentation and that's how we will build an all it.
+[SPEAKER_00]  But I have enough things covered where team members don't have to go to the documentation
+[SPEAKER_00]  all the time.
+[SPEAKER_00]  Just have to follow the structure that I've already built.
+[SPEAKER_00]  As long as you follow the structure, it will work as simple as that.
+[Unknown]  Okay.
+[SPEAKER_00]  Fine.
+[SPEAKER_00]  But just to send the context right, when does really the event stream requirements or
+[SPEAKER_00]  eyes and things like that?
+[SPEAKER_00]  Well, if you are doing it, we all, we do acknowledge that, you know, we do have
+[SPEAKER_00]  requirement for events, events streaming now.
+[Unknown]  A good case to explain is, so we have crowns running.
+[SPEAKER_00]  Now that crown is doing bulk of the things, but it helped us at a very, very
+[SPEAKER_00]  at least till but now when we are going towards inching towards one or maybe beyond one
+[SPEAKER_00]  right now we are starting to see it breaking because of the number of the load we are
+[SPEAKER_00]  going to be telling, we are having over there in the same server and stuff like that.
+[SPEAKER_00]  So the idea is to distribute the load.
+[SPEAKER_00]  How do we distribute?
+[SPEAKER_00]  Basically we have to distribute across multiple machines in the cluster and that's how things
+[SPEAKER_00]  can horizontally scale and we expect things to work that way rather than, you know, vertically
+[SPEAKER_00]  scaling and making creeps, things happen all the over there in the same box and so on.
+[SPEAKER_00]  So event streaming is nothing but it allows us to operate in a distributed environment
+[SPEAKER_00]  at the same time, various different services in microservice as you can call it.
+[SPEAKER_00]  They can communicate.
+[SPEAKER_00]  So there is a common stream where the data is and whoever subscribes to different topics
+[SPEAKER_00]  and stuff, we kind of logically write the business logic around there and that's how
+[SPEAKER_00]  things work.
+[SPEAKER_00]  You can see that in action shortly.
+[SPEAKER_00]  I have already written things so I don't want to go again.
+[SPEAKER_00]  You can read off course.
+[SPEAKER_00]  Let me drop the links here so when I'm, you know, talking you will also be opening it
+[SPEAKER_00]  on your machine.
+[SPEAKER_00]  So right now you may have seen like in some of our services, let's say not just right,
+[SPEAKER_00]  in not just we are calling another API and then somewhere else we are calling some other
+[SPEAKER_00]  API.
+[SPEAKER_00]  It is this structure, what directly have that you see, one thing calling other thing
+[SPEAKER_00]  calling here and things like that.
+[SPEAKER_00]  This is all totally a spavitty, right?
+[SPEAKER_00]  This is all spaghetti.
+[SPEAKER_00]  How do we streamline them?
+[SPEAKER_00]  With event streaming there is a central central system you can call it event bus or whatever
+[SPEAKER_00]  and there actually the communication happens.
+[SPEAKER_00]  So each individual service just operates on it on it.
+[SPEAKER_00]  If that goes down, it does not affect others technically.
+[SPEAKER_00]  And when it is back up, it will read the state from the event stream and you will operate
+[SPEAKER_00]  accordingly.
+[SPEAKER_00]  So this is the difference in a visual difference in the architecture that we get with event
+[SPEAKER_00]  stream.
+[SPEAKER_00]  Okay.
+[Unknown]  Roughly this is how it looks.
+[SPEAKER_00]  Now what are the popular tools available in the market, open source, proprietary, whatever.
+[SPEAKER_00]  So top three names, maybe I don't know, there may be some ways where you can call it
+[SPEAKER_00]  top, but popular, maybe the popular is the right tool, right, right word here.
+[SPEAKER_00]  So the popular event streaming generally can be done with Kafka, Nats and Apache Policet.
+[SPEAKER_00]  There are many more.
+[SPEAKER_00]  Even some other message queue, the traditional ones have evolved to operate in the same manner,
+[SPEAKER_00]  in the log manner.
+[Unknown]  But more or less this is how things look like.
+[SPEAKER_00]  You can find other names like every time queue is also trying to do the same thing,
+[SPEAKER_00]  what Kafka does and cool slender, but more or less this is where things look.
+[SPEAKER_00]  Now with Kafka, Nats, even Pulsar, the difference with traditional messaging queue is it allows
+[SPEAKER_00]  you to operate the pool and replay with message queues.
+[SPEAKER_00]  You kind of may have persistent, but it's not like you can still operate in a pool way.
+[SPEAKER_00]  I don't mind, maybe wrong here, but traditionally, the, you know, like the flexibility of push
+[SPEAKER_00]  and pull makes this Kafka scale very well and there is lots of adoption around it, but
+[SPEAKER_00]  that's not go to the theory.
+[SPEAKER_00]  Technically, we are focusing on Nats as of today.
+[SPEAKER_00]  Why Nats?
+[SPEAKER_00]  You will read that below.
+[SPEAKER_00]  Why why we are choosing that net, Nats easily being, there is no complicated.
+[SPEAKER_00]  You will, Sion can talk more about it.
+[SPEAKER_00]  It's quite easy.
+[SPEAKER_00]  There's just a block storage and then we have a bunch of configurations on the Kubernetes
+[SPEAKER_00]  and then we can easily host in a simple setup.
+[SPEAKER_00]  Have there been more complicated setup?
+[SPEAKER_00]  We will see, but for now, I think it is just nice.
+[SPEAKER_00]  Lightweight can do the job and we don't need to do over-engineering around.
+[Unknown]  Okay.
+[SPEAKER_00]  So that is the reason why we are going with Nats.
+[SPEAKER_00]  You can come up with arguments saying other things are better, but you, you can say like
+[SPEAKER_00]  other sub-touch we can go with that one, but I feel from all the analysis angles, I
+[SPEAKER_00]  talk to Sion in detail about it.
+[SPEAKER_00]  It looks like a good choice for now.
+[SPEAKER_00]  Okay.
+[SPEAKER_00]  When it comes to the Nats concept, there's actually two main component here.
+[SPEAKER_00]  There's the core Nats and then there is the Jets strip.
+[SPEAKER_00]  So core Nats can give you simple, publish, subscribe, subject-based addressing, giving
+[SPEAKER_00]  those kind of functionality.
+[SPEAKER_00]  But when it comes to persistence, that is something which you can't achieve with the core
+[SPEAKER_00]  Nats.
+[SPEAKER_00]  You have to have something more configuration around there to have the persistence so that
+[SPEAKER_00]  when your system goes back, I mean, goes up, you can still read it or in the future,
+[SPEAKER_00]  you can replay it.
+[SPEAKER_00]  You can set like from the what time you want to play all the events, all that kind of
+[SPEAKER_00]  flexibility is like a mini database all there with Jets strip.
+[SPEAKER_00]  And without Jets strip like core Nats, it's just normal, publish, subscribe, and the
+[SPEAKER_00]  message, the addressing and queen.
+[SPEAKER_00]  So this is the general difference which not everyone's requirement is HA.
+[SPEAKER_00]  So some people may be okay with something got lost.
+[SPEAKER_00]  So they would not enable Jets and they are okay with core Nats.
+[SPEAKER_00]  So it depends totally on the use case.
+[SPEAKER_00]  For our case, we will work with Jets strip.
+[SPEAKER_00]  Okay.
+[SPEAKER_00]  So any question before we go a little bit on the concept for okay, I think somewhere here
+[SPEAKER_00]  the S I M.
+[SPEAKER_01]  Yeah.
+[SPEAKER_01]  So you already covered it.
+[SPEAKER_01]  I just want to mention the one that is running the thing that I shared with the, with
+[SPEAKER_01]  you right, is thing the Nats dot Zim dot Dev this end point.
+[SPEAKER_01]  This is a Jets strip manable with persistence also in the backing it up.
+[SPEAKER_01]  So basically all those things up there in it.
+[Unknown]  Right.
+[SPEAKER_01]  Okay, perfect.
+[SPEAKER_01]  Okay.
+[Unknown]  I want it for my people.
+[Unknown]  Okay.
+[Unknown]  Okay.
+[SPEAKER_00]  God yeah.
+[Unknown]  Yeah.
+[Unknown]  That meaning we don't we don't always have to run in the local.
+[SPEAKER_00]  We have a dev environment and we can easily do use it for development right.
+[SPEAKER_00]  So this is.
+[SPEAKER_00]  Yeah.
+[SPEAKER_00]  So basically I mean my suggestion is if you are doing any dev environment like dev testing,
+[SPEAKER_01]  just use this infrastructure so you don't spend time trying to build and run on a Docker container
+[SPEAKER_01]  thing.
+[SPEAKER_01]  I mean, even even for someone who has done it before usually you know a day, day goes trying
+[SPEAKER_01]  to set everything up.
+[SPEAKER_01]  So just ignore that you can use this endpoint.
+[SPEAKER_01]  Just make sure that if you're using dev, the event names and all right, put something
+[SPEAKER_01]  that is in your name so that you know one event doesn't conflict with the other.
+[SPEAKER_01]  Otherwise, if you are using the same branch and trying to run the thing.
+[SPEAKER_01]  So you know, you will see that maybe messages will disappear.
+[SPEAKER_01]  Maybe someone else is testing with the same same, you know, stream and things like that.
+[SPEAKER_01]  So just be careful about what is the what is the event stream you are name you are giving
+[SPEAKER_01]  as long as it is unique, it will not interfere with anyone.
+[SPEAKER_01]  So just just use it.
+[Unknown]  Yeah.
+[SPEAKER_00]  Yeah.
+[Unknown]  Okay.
+[Unknown]  Right.
+[Unknown]  Okay.
+[SPEAKER_00]  Okay.
+[Unknown]  So some key concept right.
+[SPEAKER_00]  So technically we are sending payload from one system to another.
+[SPEAKER_00]  Not exactly that we are sending submitting the payload onto the stream and that payload
+[SPEAKER_00]  sometimes also called as a passage, you know, generally would be having subject.
+[SPEAKER_00]  The payload is the body kind of headers is you can put some headers.
+[SPEAKER_00]  I will show you the example of one of the header and then there is a reply address field.
+[SPEAKER_00]  I have never used the reply address generally not so much you do in the industry.
+[SPEAKER_00]  First things that is done in subject payload and headers that are and payload in case of
+[SPEAKER_00]  nets is by default is about one mb it can be it can go up to 64 mb and I think the idea
+[SPEAKER_00]  is to keep the keep the payload as small as possible like a simple string with enough information
+[SPEAKER_00]  and that is enough way to operate.
+[SPEAKER_00]  So this publish of service the core of the the nets or even any even string you call
+[SPEAKER_00]  it.
+[Unknown]  Now, okay, we mentioned we said stream of you time, but what exactly is the stream done?
+[SPEAKER_00]  So you can call it this RDS.
+[SPEAKER_00]  So RDS is a server, right.
+[SPEAKER_00]  And within RDS we create a database like inner feed production when you say it's a database
+[SPEAKER_00]  name that we have given and there are bunch of tables inside.
