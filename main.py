@@ -3,7 +3,7 @@ import sys
 import time
 from meetbot import GoogleMeetRecorder, MSTeamsRecorder, ZoomMeetingRecorder
 
-MEET_URL = "https://meet.google.com/vsb-tokr-eea"
+MEET_URL = "https://meet.google.com/amr-bvrt-htn"
 TEAMS_URL = "https://teams.microsoft.com/l/meetup-join/19%3ameeting_YzA4N2Y3ZjQtNzliMS00NzFhLThjYTEtMzExMDUwMTViMzBm%40thread.v2/0?context=%7b%22Tid%22%3a%22ebd44379-62c4-41c8-8741-80fadcf2379e%22%2c%22Oid%22%3a%221692d7ae-7733-42ec-9e9e-4f921497626f%22%7d"
 ZOOM_URL = "https://us05web.zoom.us/j/81004014333?pwd=bvDn807p2S0wC8fXdPAxoJUjq2pQoj.1"
 FILE_OUTPUT_PATH = "/home/mudit/Desktop/test/recordingbot/meeting.mp4"
