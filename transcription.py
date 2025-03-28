@@ -6,11 +6,11 @@ import subprocess
 import os
 
 
-hugging_face_token=""
-original_audio_path = "/mnt/nvme_disk2/User_data/nb57077k/meetbot_project/recording.mp4"
+hugging_face_token="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"
+original_audio_path ="/mnt/nvme_disk2/User_data/nb57077k/meetbot_project/output.mp4"
 trimmed_audio_path = "/mnt/nvme_disk2/User_data/nb57077k/meetbot_project/trimmed_recording.mp4"
 output_wav = "/mnt/nvme_disk2/User_data/nb57077k/meetbot_project/trimmed_recording.wav"
-files_to_delete = ["/mnt/nvme_disk2/User_data/nb57077k/meetbot_project/trimmed_recording.mp4", "/mnt/nvme_disk2/User_data/nb57077k/meetbot_project/trimmed_recording.wav"]
+files_to_delete = [ "/mnt/nvme_disk2/User_data/nb57077k/meetbot_project/trimmed_recording.wav"]
 
 def trim_audio(input_file, output_file, duration=600, delete_files=None):
     if delete_files:
@@ -18,16 +18,27 @@ def trim_audio(input_file, output_file, duration=600, delete_files=None):
             if os.path.exists(file):
                 os.remove(file)
                 print(f"Deleted: {file}")
-    command = [
-        "ffmpeg",
-        "-i", input_file,
-        "-t", str(duration), 
-        "-c:a", "copy",
-        "-c:v", "copy",
-        output_file
-    ]
+    # print("hello world")
+    # command1 = [
+    #     "ffmpeg",
+    #     "-i", input_file,
+    #     "-c:a", "aac",
+    #     "-c:v", "libx264",
+    #     "output.mp4"
+    # ]
+    # command2 = [
+    #     "ffmpeg",
+    #     "-i", input_file,
+    #     "-t", str(duration), 
+    #     "-c:a", "copy",
+    #     "-c:v", "copy",
+    #     output_file
+    # ]
 
-    subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True)
+
+    # subprocess.run(command1, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True)
+    # subprocess.run(command2, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True)
+    print("files deleted successfully")
 
 def match_speakers_to_transcript(segments, speaker_info):
     transcript_with_speakers = []
@@ -76,7 +87,7 @@ def transcribe_audio(audio_file):
 
 
 trim_audio(original_audio_path, trimmed_audio_path,duration=100,delete_files=files_to_delete)
-convert_mp4_to_wav(trimmed_audio_path, output_wav)
+convert_mp4_to_wav(original_audio_path, output_wav)
 
 # Process the trimmed file
 transcript, segments = transcribe_audio(output_wav)
