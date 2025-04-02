@@ -1,0 +1,1556 @@
+[
+    {
+        "timestamp": "0.00s",
+        "speaker": [
+            "Kristie 'KT' Thomas;"
+        ],
+        "text": " Hi, this is Eric Johnson. It's February 18, 2021, and this is the engineering key review at GitLab."
+    },
+    {
+        "timestamp": "10.00s",
+        "speaker": [
+            "Eric Johnson"
+        ],
+        "text": " So I've got number four in the agenda, which is a proposal to break up this meeting into four department key reviews. So currently this is engineering."
+    },
+    {
+        "timestamp": "23.00s",
+        "speaker": [
+            "Eric Johnson - CTO"
+        ],
+        "text": " Development quality, security and UX infrastructure and support to their own key reviews already. I have the reasons why increased visibility able to go deeper."
+    },
+    {
+        "timestamp": "37.00s",
+        "speaker": [
+            "Eric Johnson"
+        ],
+        "text": " Increased the objectivity with which my reports can manage their groups, allow me more time to focus on new markets and allow me to shift into more of a question asker mode, then generating content and answering questions in these meetings."
+    },
+    {
+        "timestamp": "51.00s",
+        "speaker": [
+            "Eric Johnson - CTO"
+        ],
+        "text": " And to avoid adding three net new meetings to stakeholders counters, I propose we do a sort of two month rotation. So month one development quality go month two security and UX would go."
+    },
+    {
+        "timestamp": "65.00s",
+        "speaker": [
+            "Eric Johnson - CTO"
+        ],
+        "text": " How do people feel about that proposal?"
+    },
+    {
+        "timestamp": "68.00s",
+        "speaker": [
+            "Eric Johnson"
+        ],
+        "text": " I think in the group conversations it's working really well. So I'm supportive and this is the smallest thing. Maybe we need four meetings a month, like it's the biggest department, it's super central. But you propose this. I don't I could see either way. So let's stick with the proposal."
+    },
+    {
+        "timestamp": "91.00s",
+        "speaker": [
+            "Sid Sijbrandij"
+        ],
+        "text": " Go we'll try it and we'll we can be flexible. I mean the development is larger. Maybe they go more frequently or something. I'll see how it goes."
+    },
+    {
+        "timestamp": "100.00s",
+        "speaker": [
+            "Eric Johnson - CTO"
+        ],
+        "text": " All right. And then I've got number five, which is we've got R&D overall MR rate. And we also have R&D wider MR rate both as top level KPIs for engineering."
+    },
+    {
+        "timestamp": "117.00s",
+        "speaker": [
+            "Eric Johnson - CTO"
+        ],
+        "text": " So the difference between them in the simplest sense is that R&D wider MR rate includes both community contributions and community MRs."
+    },
+    {
+        "timestamp": "128.00s",
+        "speaker": [
+            "Eric Johnson - CTO"
+        ],
+        "text": " The problems I see with this are that one the wider MR rate, the one that includes internally and external MRs. It duplicates the overall MR rate, which is."
+    },
+    {
+        "timestamp": "138.00s",
+        "speaker": [
+            "Eric Johnson"
+        ],
+        "text": " The wider MR rate should just be external right. And then overall should be narrow plus wider."
+    },
+    {
+        "timestamp": "151.00s",
+        "speaker": [
+            "Sid Sijbrandij"
+        ],
+        "text": " Oh yeah. Like we say the wider community."
+    },
+    {
+        "timestamp": "155.00s",
+        "speaker": [
+            "Eric Johnson"
+        ],
+        "text": " Right. Right. Okay. So there's."
+    },
+    {
+        "timestamp": "159.00s",
+        "speaker": [
+            "Eric Johnson"
+        ],
+        "text": " I have to check the taxonomy."
+    },
+    {
+        "timestamp": "162.00s",
+        "speaker": [
+            "Eric Johnson"
+        ],
+        "text": " Well, like can you can you confirm that's that's that's since reasoning is my understanding as well."
+    },
+    {
+        "timestamp": "171.00s",
+        "speaker": [
+            "Christopher Lefelh "
+        ],
+        "text": " Yeah, I believe water MR rate just captures community contributions only and no internal."
+    },
+    {
+        "timestamp": "180.00s",
+        "speaker": [
+            "Eric Johnson - CTO"
+        ],
+        "text": " Yeah, and the reason we measure that is that like one of the most likely failure modes is that we lose the community."
+    },
+    {
+        "timestamp": "187.00s",
+        "speaker": [
+            "Sid Sijbrandij"
+        ],
+        "text": " Yeah. So we're get or we're gets goofy is the when you look at a specific team within the company, there could be contributions outside of that that aren't community contributions."
+    },
+    {
+        "timestamp": "200.00s",
+        "speaker": [
+            "Christopher Lefelh-"
+        ],
+        "text": " They would be viewed community contributions by that group, but effectively they're not from outside the company. So that's why we use wider to kind of reflect that and narrow is very specific to the team."
+    },
+    {
+        "timestamp": "211.00s",
+        "speaker": [
+            "Christopher Lefelh "
+        ],
+        "text": " Are you saying that if someone in plan contributes to verify its viewed as wider."
+    },
+    {
+        "timestamp": "217.00s",
+        "speaker": [
+            "Eric Johnson - CTO"
+        ],
+        "text": " Not quite that plan plan and verify are just fine. It's when you look at like the development versus infrastructure infrastructure will oftentimes contribute to developments work, but it won't be counted as MRs."
+    },
+    {
+        "timestamp": "231.00s",
+        "speaker": [
+            "Christopher Lefelh"
+        ],
+        "text": " Okay, that's a that's a potential bit of funkiness that we should talk about separately. I didn't have that in my sort of critique of this, but that that doesn't necessarily make intuitive sense to me."
+    },
+    {
+        "timestamp": "243.00s",
+        "speaker": [
+            "Eric Johnson - CTO"
+        ],
+        "text": " So, so then I think part of my critique of this can be thrown out because it's not as duplicative as I thought, but I still think there's a problem with R&D wider MR rate, which is this thing doesn't really move."
+    },
+    {
+        "timestamp": "256.00s",
+        "speaker": [
+            "Eric Johnson - CTO"
+        ],
+        "text": " In part because it's a rate. So it feels like the way to drive this up is to specifically drive community authors to contribute more than one MR per month."
+    },
+    {
+        "timestamp": "267.00s",
+        "speaker": [
+            "Eric Johnson - CTO"
+        ],
+        "text": " That's how this moves up because it's a productivity rate like we use internally. And that doesn't necessarily feel like the right thing because there's scenarios in which this goes up."
+    },
+    {
+        "timestamp": "275.00s",
+        "speaker": [
+            "Eric Johnson - CTO"
+        ],
+        "text": " We've actually got less contributions overall and less contributors overall."
+    },
+    {
+        "timestamp": "279.00s",
+        "speaker": [
+            "Eric Johnson - CTO"
+        ],
+        "text": " Wait, wait, wait a second. So you're saying that R&D wider MR rate is number MRs per external contributor."
+    },
+    {
+        "timestamp": "289.00s",
+        "speaker": [
+            "Sid Sijbrandij"
+        ],
+        "text": " Oh my goodness, that should not be the thing. It should be contributions for GitLab team member. So to contribute those."
+    },
+    {
+        "timestamp": "299.00s",
+        "speaker": [
+            "Sid Sijbrandij - CEO"
+        ],
+        "text": " The thing above the division is the external ones. The thing below is the number of team members at GitLab."
+    },
+    {
+        "timestamp": "310.00s",
+        "speaker": [
+            "Sid Sijbrandij"
+        ],
+        "text": " Is that the case, Lily?"
+    },
+    {
+        "timestamp": "313.00s",
+        "speaker": [
+            "Eric Johnson - CTO"
+        ],
+        "text": " I'm checking right now."
+    },
+    {
+        "timestamp": "317.00s",
+        "speaker": [
+            "Lily Mai - Analyst"
+        ],
+        "text": " I think so in our MRs per team member. So unless we start calling people outside the company team member, then it shouldn't be that."
+    },
+    {
+        "timestamp": "326.00s",
+        "speaker": [
+            "Sid Sijbrandij - CEO"
+        ],
+        "text": " Yeah, just clarifying here. So our numerator is community contributions and then our denominator is GitLab team members. So it's not per external member."
+    },
+    {
+        "timestamp": "340.00s",
+        "speaker": [
+            "Lily Mai - Analyst"
+        ],
+        "text": " So what we're doing there, Eric, is we're not trying to say how many MRs does someone send if they send something?"
+    },
+    {
+        "timestamp": "357.00s",
+        "speaker": [
+            "Sid Sijbrandij"
+        ],
+        "text": " We're saying how many MRs from external do we get for the size of our organization?"
+    },
+    {
+        "timestamp": "370.00s",
+        "speaker": [
+            "Sid Sijbrandij"
+        ],
+        "text": " Sorry, I have a childhood emergency outside the door."
+    },
+    {
+        "timestamp": "382.00s",
+        "speaker": [
+            "Eric Johnson"
+        ],
+        "text": " So the maybe explain the context behind this. The context is as we grow as a company, we should make sure we keep the community up."
+    },
+    {
+        "timestamp": "390.00s",
+        "speaker": [
+            "Sid Sijbrandij"
+        ],
+        "text": " The logical thing is for the community to flatline and the size of the org to go in before you know it, you've kind of outgrown the wider community."
+    },
+    {
+        "timestamp": "400.00s",
+        "speaker": [
+            "Sid Sijbrandij"
+        ],
+        "text": " Yeah, and what I'm seeing is we created this pre-sophisticated taxonomy with prefixes and postfixes to talk about these things."
+    },
+    {
+        "timestamp": "408.00s",
+        "speaker": [
+            "Eric Johnson"
+        ],
+        "text": " But in reality, we've only got two of them and it's we keep forgetting. We have a hard time discussing this thing. So I'd rather just name them simply two names for what they are rather than then using the taxonomy."
+    },
+    {
+        "timestamp": "422.00s",
+        "speaker": [
+            "Eric Johnson"
+        ],
+        "text": " But also like in F, I have this proposal of like, what if we just track as a KPI of the percentage of total MRs that come from the community over time and we would see that drop."
+    },
+    {
+        "timestamp": "431.00s",
+        "speaker": [
+            "Eric Johnson"
+        ],
+        "text": " I love that. I love that. Let's do that instead."
+    },
+    {
+        "timestamp": "435.00s",
+        "speaker": [
+            "Sid Sijbrandij"
+        ],
+        "text": " But the thing the thing why we have this complex thing is because you can game that you want to game that you just produce fewer MRs with the engineers that get lost."
+    },
+    {
+        "timestamp": "448.00s",
+        "speaker": [
+            "Sid Sijbrandij"
+        ],
+        "text": " So if you drive that really hard and say this is your number one goal, it's very easy to achieve is just tell all your engineers to produce half."
+    },
+    {
+        "timestamp": "456.00s",
+        "speaker": [
+            "Sid Sijbrandij"
+        ],
+        "text": " Yeah, so we have we have different metrics to prevent that from happening the same way that like support SLAs and asset kind of buttress one another."
+    },
+    {
+        "timestamp": "463.00s",
+        "speaker": [
+            "Eric Johnson"
+        ],
+        "text": " I think we're we're robust to that but simplifying this would make these conversations."
+    },
+    {
+        "timestamp": "468.00s",
+        "speaker": [
+            "Eric Johnson"
+        ],
+        "text": " If you as our CTO don't even understand them, we went overboard."
+    },
+    {
+        "timestamp": "473.00s",
+        "speaker": [
+            "Sid Sijbrandij"
+        ],
+        "text": " So I'm supportive."
+    },
+    {
+        "timestamp": "474.00s",
+        "speaker": [
+            "Sid Sijbrandij"
+        ],
+        "text": " And I forgot. I was agreeing the stuff this morning and like there's a problem with this and then you just remind me of the context."
+    },
+    {
+        "timestamp": "482.00s",
+        "speaker": [
+            "Eric Johnson"
+        ],
+        "text": " So yeah, I can't really my head."
+    },
+    {
+        "timestamp": "483.00s",
+        "speaker": [
+            "Eric Johnson"
+        ],
+        "text": " A percentage that come from the community. I love that. It's what all our investors ask about. Let's do that."
+    },
+    {
+        "timestamp": "488.00s",
+        "speaker": [
+            "Sid Sijbrandij"
+        ],
+        "text": " Okay. Cool. So, um, Lily, if you can work with Max to make that transition of your and I'll hold the one that we're talking about."
+    },
+    {
+        "timestamp": "498.00s",
+        "speaker": [
+            "Eric Johnson - CTO"
+        ],
+        "text": " That's from the military. Thanks."
+    },
+    {
+        "timestamp": "500.00s",
+        "speaker": [
+            "Eric Johnson - CTO"
+        ],
+        "text": " I'm on the call. Sorry. It was a bit late."
+    },
+    {
+        "timestamp": "503.00s",
+        "speaker": [
+            "Mek Stittri"
+        ],
+        "text": " We do have a timeline. We do have PIs on the raw number of community MRs and we can make the shift."
+    },
+    {
+        "timestamp": "509.00s",
+        "speaker": [
+            "Mek Stittri"
+        ],
+        "text": " And why they're confirming from the definition. I think why they only counts for community."
+    },
+    {
+        "timestamp": "515.00s",
+        "speaker": [
+            "Mek Stittri"
+        ],
+        "text": " And that's that's what the definition is."
+    },
+    {
+        "timestamp": "519.00s",
+        "speaker": [
+            "Mek Stittri"
+        ],
+        "text": " Cool."
+    },
+    {
+        "timestamp": "521.00s",
+        "speaker": [
+            "Mek Stittri"
+        ],
+        "text": " All right. So, number six, then Christopher."
+    },
+    {
+        "timestamp": "528.00s",
+        "speaker": [
+            "Eric Johnson"
+        ],
+        "text": " Sorry. I was looking up to see if I had the percentage graph because I think we played around with this at one point and had a draft of that."
+    },
+    {
+        "timestamp": "534.00s",
+        "speaker": [
+            "Christopher Lefelh:"
+        ],
+        "text": " Probably about five months back. If I can remember, Lily."
+    },
+    {
+        "timestamp": "539.00s",
+        "speaker": [
+            "Christopher Lefelh:_"
+        ],
+        "text": " Just in FYI month of February, if you were looking at any particular metrics, particularly in development at MR rate."
+    },
+    {
+        "timestamp": "547.00s",
+        "speaker": [
+            "Christopher Lefelh:_"
+        ],
+        "text": " We haven't had updates in four days. There's apparently a lag issue that's been problematic for the data team to basically get."
+    },
+    {
+        "timestamp": "557.00s",
+        "speaker": [
+            "Christopher Lefelh-_"
+        ],
+        "text": " Update metrics and they're working on that."
+    },
+    {
+        "timestamp": "563.00s",
+        "speaker": [
+            "Christopher Lefelh:_"
+        ],
+        "text": " I'm sorry, Mac, you get the next one."
+    },
+    {
+        "timestamp": "568.00s",
+        "speaker": [
+            "Mek Stittri"
+        ],
+        "text": " So yeah, I there's some some color there on on the on medication, the lag later on."
+    },
+    {
+        "timestamp": "574.00s",
+        "speaker": [
+            "Mek Stittri - Directo"
+        ],
+        "text": " On to on to seven. We continue. I said FYI in addition to the TBI status."
+    },
+    {
+        "timestamp": "581.00s",
+        "speaker": [
+            "Bryan Wise"
+        ],
+        "text": " I'm sorry. Mac, I wanted to just touch on the postgres replication issue there real quick."
+    },
+    {
+        "timestamp": "587.00s",
+        "speaker": [
+            "Bryan Wise"
+        ],
+        "text": " I've been trying to get my arms wrapped around it."
+    },
+    {
+        "timestamp": "590.00s",
+        "speaker": [
+            "Bryan Wise"
+        ],
+        "text": " Do we have the right attention to this? This is kind of Eric."
+    },
+    {
+        "timestamp": "595.00s",
+        "speaker": [
+            "Bryan Wise"
+        ],
+        "text": " I don't know if you were commenting on."
+    },
+    {
+        "timestamp": "598.00s",
+        "speaker": [
+            "Bryan Wise"
+        ],
+        "text": " I'm hinting towards this in the last meeting around some of the infrastructure improvements on the product side. I'm just not quite sure whose responsibility is to focus on getting a handle on some of the constraints we have on replication."
+    },
+    {
+        "timestamp": "613.00s",
+        "speaker": [
+            "Bryan Wise"
+        ],
+        "text": " Yeah, the what I was mentioning in the in the product here view about an hour ago is I think is sort of like unrelated."
+    },
+    {
+        "timestamp": "619.00s",
+        "speaker": [
+            "Eric Johnson"
+        ],
+        "text": " So I think the DRI needs to be your kind of data engineering team. But of course there's a dependency on infrastructure because that's for the data is being piqued from they they do on that data source."
+    },
+    {
+        "timestamp": "631.00s",
+        "speaker": [
+            "Eric Johnson - CTO"
+        ],
+        "text": " Yeah, I'll say for the replication lag on that slave host where I'm sorry, not the on the the secondary host where the data is being pulled from like infrastructure would be the DRI for that."
+    },
+    {
+        "timestamp": "646.00s",
+        "speaker": [
+            "Steve Loyd"
+        ],
+        "text": " Any escalations, but well all those and I know we have an action plan for that as far as creating another dedicated host just for the the data team to pull from."
+    },
+    {
+        "timestamp": "659.00s",
+        "speaker": [
+            "Steve Loyd"
+        ],
+        "text": " Okay."
+    },
+    {
+        "timestamp": "661.00s",
+        "speaker": [
+            "Bryan Wise"
+        ],
+        "text": " I did ask I saw that issue and I did talk to Craig gums a little bit as well on the database side just to see if there's some database improvements and I'm still trying to figure out, you know, if it's truly just dedicated computation."
+    },
+    {
+        "timestamp": "675.00s",
+        "speaker": [
+            "Bryan Wise"
+        ],
+        "text": " So to resource a server or if there's actually some some database tuning that needs to occur, do you have a sense of that there's so I'd say it's it's three different things."
+    },
+    {
+        "timestamp": "688.00s",
+        "speaker": [
+            "Steve Loyd"
+        ],
+        "text": " It's having a dedicated host that doesn't have conflicting query traffic coming from other other workloads."
+    },
+    {
+        "timestamp": "698.00s",
+        "speaker": [
+            "Steve Loyd- V"
+        ],
+        "text": " There are some tuning performance or tuning improvements to be made and then there's also improvements in and this is where it does maybe relate a little bit to what the topic was in the last review basically the overall demand on the database layer from from.com activities and like improving those so it's it's definitely not just one of those things that one of the most specific actions."
+    },
+    {
+        "timestamp": "726.00s",
+        "speaker": [
+            "Steve Loyd"
+        ],
+        "text": " We're going to take though is separating out and having a dedicated host so that we're just dealing with the profile of the data engineering traffic on there and not having conflicting query."
+    },
+    {
+        "timestamp": "740.00s",
+        "speaker": [
+            "Steve Loyd - V"
+        ],
+        "text": " Conflicting queries affect the ability to update the replication."
+    },
+    {
+        "timestamp": "747.00s",
+        "speaker": [
+            "Steve Loyd"
+        ],
+        "text": " Steve, I definitely want to partner with you on this one because I think the demand on those databases is only going to increase it's not going down."
+    },
+    {
+        "timestamp": "755.00s",
+        "speaker": [
+            "Bryan Wise"
+        ],
+        "text": " And I think we need to get I'm still unclear on where to focus and to get the biggest bang for the buck. I think of the computational resource dedication that's going to be a good thing, but I'll probably going to squeeze the balloon and then the next area will will honor itself."
+    },
+    {
+        "timestamp": "772.00s",
+        "speaker": [
+            "Bryan Wise"
+        ],
+        "text": " Okay, I'll tell you what I'll put into the infricky review for next week."
+    },
+    {
+        "timestamp": "776.00s",
+        "speaker": [
+            "Steve Loyd"
+        ],
+        "text": " Okay, on this issue."
+    },
+    {
+        "timestamp": "779.00s",
+        "speaker": [
+            "Steve Loyd"
+        ],
+        "text": " Thank you, Steve."
+    },
+    {
+        "timestamp": "786.00s",
+        "speaker": [
+            "Bryan Wise"
+        ],
+        "text": " So then back to mecon 7 or yes."
+    },
+    {
+        "timestamp": "794.00s",
+        "speaker": [
+            "Eric Johnson"
+        ],
+        "text": " Thank you. And Rob was in these assassins that this morning as well."
+    },
+    {
+        "timestamp": "798.00s",
+        "speaker": [
+            "Mek Stittri - Dir."
+        ],
+        "text": " Brian, we have the attention there."
+    },
+    {
+        "timestamp": "801.00s",
+        "speaker": [
+            "Mek Stittri"
+        ],
+        "text": " Number seven, just provide provide an update on previous conversations."
+    },
+    {
+        "timestamp": "805.00s",
+        "speaker": [
+            "Mek Stittri - Dir."
+        ],
+        "text": " We continue to improve defect tracking and against SLOs."
+    },
+    {
+        "timestamp": "809.00s",
+        "speaker": [
+            "Mek Stittri - Dir."
+        ],
+        "text": " There is a first iteration P.I. that we are experimenting to show percentage of defects meeting."
+    },
+    {
+        "timestamp": "815.00s",
+        "speaker": [
+            "Mek Stittri"
+        ],
+        "text": " The SLOs key findings as ones are hovering at 80% as to at 60."
+    },
+    {
+        "timestamp": "822.00s",
+        "speaker": [
+            "Mek Stittri - Dir."
+        ],
+        "text": " We've been focused mostly on S1 as to this point as hence why S3 and S4s are a lower."
+    },
+    {
+        "timestamp": "830.00s",
+        "speaker": [
+            "Mek Stittri - Dir-"
+        ],
+        "text": " And this will likely be the case."
+    },
+    {
+        "timestamp": "832.00s",
+        "speaker": [
+            "Mek Stittri - Dir"
+        ],
+        "text": " We are also in point B are working on the measurement for average open box age."
+    },
+    {
+        "timestamp": "838.00s",
+        "speaker": [
+            "Mek Stittri"
+        ],
+        "text": " So we are going to give us a whole picture of what's left."
+    },
+    {
+        "timestamp": "842.00s",
+        "speaker": [
+            "Mek Stittri"
+        ],
+        "text": " If the age goes up or down, we are cleaning the backlog the average age should go down as well."
+    },
+    {
+        "timestamp": "847.00s",
+        "speaker": [
+            "Mek Stittri - Dir."
+        ],
+        "text": " There's no P.I yet, but I just want to update and ensure beyond this."
+    },
+    {
+        "timestamp": "852.00s",
+        "speaker": [
+            "Mek Stittri"
+        ],
+        "text": " It's not an off track."
+    },
+    {
+        "timestamp": "854.00s",
+        "speaker": [
+            "Mek Stittri - Dir."
+        ],
+        "text": " Number C Craig on S2."
+    },
+    {
+        "timestamp": "857.00s",
+        "speaker": [
+            "Mek Stittri - Dir."
+        ],
+        "text": " Yeah, just I was looking through the charts and I noted that there was a spike in meantime to close."
+    },
+    {
+        "timestamp": "864.00s",
+        "speaker": [
+            "Craig Mestel"
+        ],
+        "text": " Just wanted to see if you had any insight into that for us."
+    },
+    {
+        "timestamp": "866.00s",
+        "speaker": [
+            "Craig Mestel"
+        ],
+        "text": " This is the S2."
+    },
+    {
+        "timestamp": "867.00s",
+        "speaker": [
+            "Craig Mestel"
+        ],
+        "text": " That's the S1 looked fine."
+    },
+    {
+        "timestamp": "869.00s",
+        "speaker": [
+            "Craig Mestel"
+        ],
+        "text": " Yeah, this is where the point B on age and supplemental charts in the back end helps."
+    },
+    {
+        "timestamp": "874.00s",
+        "speaker": [
+            "Mek Stittri"
+        ],
+        "text": " So I haven't seen a dip in age nor the count overall."
+    },
+    {
+        "timestamp": "878.00s",
+        "speaker": [
+            "Mek Stittri"
+        ],
+        "text": " I think it's the latter."
+    },
+    {
+        "timestamp": "880.00s",
+        "speaker": [
+            "Mek Stittri"
+        ],
+        "text": " We need to dig in a bit deeper in that."
+    },
+    {
+        "timestamp": "882.00s",
+        "speaker": [
+            "Mek Stittri"
+        ],
+        "text": " And also the data lag."
+    },
+    {
+        "timestamp": "885.00s",
+        "speaker": [
+            "Mek Stittri - Dir."
+        ],
+        "text": " I would like to leave out."
+    },
+    {
+        "timestamp": "886.00s",
+        "speaker": [
+            "Mek Stittri"
+        ],
+        "text": " We haven't had a whole picture when everything is synced in as well."
+    },
+    {
+        "timestamp": "890.00s",
+        "speaker": [
+            "Mek Stittri - Dir."
+        ],
+        "text": " So I think that's the first thing that I would like to do is to get a little bit of insight."
+    },
+    {
+        "timestamp": "893.00s",
+        "speaker": [
+            "Mek Stittri - Dir."
+        ],
+        "text": " I think that's the first thing that I would like to do."
+    },
+    {
+        "timestamp": "896.00s",
+        "speaker": [
+            "Christie Lennev"
+        ],
+        "text": " Yeah, Christie, you have some insights."
+    },
+    {
+        "timestamp": "899.00s",
+        "speaker": [
+            "Christie Lennev"
+        ],
+        "text": " Yeah, I'm just wondering if part of this could be the fact that we changed the severity across the board for MR's to S2."
+    },
+    {
+        "timestamp": "908.00s",
+        "speaker": [
+            "Christie Lennev"
+        ],
+        "text": " And so we may have some older bugs in there that hadn't been addressed because they were at a lower severity."
+    },
+    {
+        "timestamp": "914.00s",
+        "speaker": [
+            "Christie Lennev"
+        ],
+        "text": " Now we've moved them to S2 and maybe that caused a little spike."
+    },
+    {
+        "timestamp": "918.00s",
+        "speaker": [
+            "Mek Stittri"
+        ],
+        "text": " And it won't be a huge volume."
+    },
+    {
+        "timestamp": "921.00s",
+        "speaker": [
+            "Mek Stittri"
+        ],
+        "text": " We also iterated after that to pin on priority since try to own prior to session."
+    },
+    {
+        "timestamp": "927.00s",
+        "speaker": [
+            "Mek Stittri"
+        ],
+        "text": " So I wouldn't account it entirely to that."
+    },
+    {
+        "timestamp": "931.00s",
+        "speaker": [
+            "Mek Stittri _"
+        ],
+        "text": " I mean, this isn't the infertile review, but."
+    },
+    {
+        "timestamp": "936.00s",
+        "speaker": [
+            "Eric Johnson"
+        ],
+        "text": " I know that they've gotten backed up on those issues."
+    },
+    {
+        "timestamp": "940.00s",
+        "speaker": [
+            "Eric Johnson"
+        ],
+        "text": " So if some some good portion of those are infertile created or related then that may be lifting it as well."
+    },
+    {
+        "timestamp": "947.00s",
+        "speaker": [
+            "Eric Johnson"
+        ],
+        "text": " I can take the deeper dig in and then provide an update next time."
+    },
+    {
+        "timestamp": "952.00s",
+        "speaker": [
+            "Mek Stittri"
+        ],
+        "text": " I think we need extra debug slicing of the data here."
+    },
+    {
+        "timestamp": "962.00s",
+        "speaker": [
+            "Mek Stittri"
+        ],
+        "text": " So you would like to go to point eight."
+    },
+    {
+        "timestamp": "966.00s",
+        "speaker": [
+            "Mek Stittri"
+        ],
+        "text": " Yeah, we are now measuring S1 as to SLO achievement with closed bugs."
+    },
+    {
+        "timestamp": "973.00s",
+        "speaker": [
+            "Sid Sijbrandij"
+        ],
+        "text": " But if you then look at the number of bugs, it's exponential growth."
+    },
+    {
+        "timestamp": "981.00s",
+        "speaker": [
+            "Sid Sijbrandij"
+        ],
+        "text": " And then it will be trivial to us to achieve 100% SLO achievement."
+    },
+    {
+        "timestamp": "988.00s",
+        "speaker": [
+            "Sid Sijbrandij"
+        ],
+        "text": " If you just look at close bugs, even though there would be a major problem in the company 99% of all bugs are overdue."
+    },
+    {
+        "timestamp": "996.00s",
+        "speaker": [
+            "Sid Sijbrandij"
+        ],
+        "text": " As long as I only close ones that are still within the SLO, I'll have great achievement."
+    },
+    {
+        "timestamp": "1002.00s",
+        "speaker": [
+            "Sid Sijbrandij"
+        ],
+        "text": " So I think we shouldn't be looking at the closed bugs."
+    },
+    {
+        "timestamp": "1005.00s",
+        "speaker": [
+            "Sid Sijbrandij"
+        ],
+        "text": " I think we should be looking at open bugs."
+    },
+    {
+        "timestamp": "1007.00s",
+        "speaker": [
+            "Sid Sijbrandij"
+        ],
+        "text": " The entire population or percentage of those is within the SLO time."
+    },
+    {
+        "timestamp": "1012.00s",
+        "speaker": [
+            "Sid Sijbrandij"
+        ],
+        "text": " I think we're doing it the wrong way."
+    },
+    {
+        "timestamp": "1016.00s",
+        "speaker": [
+            "Sid Sijbrandij"
+        ],
+        "text": " Thanks for the thanks for the feedbacks that."
+    },
+    {
+        "timestamp": "1019.00s",
+        "speaker": [
+            "Mek Stittri - Dir_"
+        ],
+        "text": " Hence why we wanted to have the average age to measure what's outside in the open."
+    },
+    {
+        "timestamp": "1026.00s",
+        "speaker": [
+            "Mek Stittri"
+        ],
+        "text": " So we're going to have a good time."
+    },
+    {
+        "timestamp": "1036.00s",
+        "speaker": [
+            "Mek Stittri"
+        ],
+        "text": " And then make this iteration to measure also measure focus on the age of all opened, including open bugs."
+    },
+    {
+        "timestamp": "1044.00s",
+        "speaker": [
+            "Mek Stittri"
+        ],
+        "text": " So average age would get closer to it."
+    },
+    {
+        "timestamp": "1047.00s",
+        "speaker": [
+            "Sid Sijbrandij"
+        ],
+        "text": " It's not what I'm proposing."
+    },
+    {
+        "timestamp": "1049.00s",
+        "speaker": [
+            "Sid Sijbrandij"
+        ],
+        "text": " What I'm proposing is off the open books, or percentages outside of SLO."
+    },
+    {
+        "timestamp": "1054.00s",
+        "speaker": [
+            "Sid Sijbrandij"
+        ],
+        "text": " So the percentage you do now just do it about the open bugs month or close."
+    },
+    {
+        "timestamp": "1058.00s",
+        "speaker": [
+            "Sid Sijbrandij"
+        ],
+        "text": " Oh, got it."
+    },
+    {
+        "timestamp": "1059.00s",
+        "speaker": [
+            "Mek Stittri"
+        ],
+        "text": " Okay."
+    },
+    {
+        "timestamp": "1060.00s",
+        "speaker": [
+            "Mek Stittri - Dir."
+        ],
+        "text": " The exceeding SLO for open bugs."
+    },
+    {
+        "timestamp": "1064.00s",
+        "speaker": [
+            "Mek Stittri"
+        ],
+        "text": " Yeah, or open bugs that are within SLO."
+    },
+    {
+        "timestamp": "1067.00s",
+        "speaker": [
+            "Sid Sijbrandij"
+        ],
+        "text": " So you have a chart that should go up and to the right like everything else."
+    },
+    {
+        "timestamp": "1074.00s",
+        "speaker": [
+            "Sid Sijbrandij"
+        ],
+        "text": " Sounds great."
+    },
+    {
+        "timestamp": "1075.00s",
+        "speaker": [
+            "Sid Sijbrandij"
+        ],
+        "text": " We can take it to the next data metrics work stream to deliver this."
+    },
+    {
+        "timestamp": "1080.00s",
+        "speaker": [
+            "Mek Stittri"
+        ],
+        "text": " Cool. Thanks."
+    },
+    {
+        "timestamp": "1082.00s",
+        "speaker": [
+            "Sid Sijbrandij"
+        ],
+        "text": " Yeah."
+    },
+    {
+        "timestamp": "1083.00s",
+        "speaker": [
+            "Sid Sijbrandij"
+        ],
+        "text": " Yeah."
+    },
+    {
+        "timestamp": "1084.00s",
+        "speaker": [
+            "Sid Sijbrandij"
+        ],
+        "text": " You'll have to figure out how to."
+    },
+    {
+        "timestamp": "1086.00s",
+        "speaker": [
+            "Eric Johnson"
+        ],
+        "text": " Because we like to be able to have charts that we can historically reconstruct if we need to."
+    },
+    {
+        "timestamp": "1090.00s",
+        "speaker": [
+            "Eric Johnson"
+        ],
+        "text": " So in tickets close out, you need to go through their history to figure out at this time when it was open."
+    },
+    {
+        "timestamp": "1097.00s",
+        "speaker": [
+            "Eric Johnson"
+        ],
+        "text": " Did it breach the SLO or not?"
+    },
+    {
+        "timestamp": "1099.00s",
+        "speaker": [
+            "Eric Johnson"
+        ],
+        "text": " That's a good point."
+    },
+    {
+        "timestamp": "1100.00s",
+        "speaker": [
+            "Eric Johnson"
+        ],
+        "text": " This might be much harder computationally."
+    },
+    {
+        "timestamp": "1103.00s",
+        "speaker": [
+            "Sid Sijbrandij"
+        ],
+        "text": " Yeah."
+    },
+    {
+        "timestamp": "1109.00s",
+        "speaker": [
+            "Sid Sijbrandij"
+        ],
+        "text": " So I totally respect if we can do it for that reason."
+    },
+    {
+        "timestamp": "1115.00s",
+        "speaker": [
+            "Eric Johnson"
+        ],
+        "text": " Cool."
+    },
+    {
+        "timestamp": "1116.00s",
+        "speaker": [
+            "Eric Johnson"
+        ],
+        "text": " Nine Craig."
+    },
+    {
+        "timestamp": "1118.00s",
+        "speaker": [
+            "Craig Mestel"
+        ],
+        "text": " Yeah, I just wanted to ask the team like I went through all the key meeting metrics."
+    },
+    {
+        "timestamp": "1122.00s",
+        "speaker": [
+            "Craig Mestel"
+        ],
+        "text": " Everything looked in line with prior periods and look good."
+    },
+    {
+        "timestamp": "1125.00s",
+        "speaker": [
+            "Craig Mestel"
+        ],
+        "text": " Is there anything the team wants to call out?"
+    },
+    {
+        "timestamp": "1127.00s",
+        "speaker": [
+            "Craig Mestel"
+        ],
+        "text": " I suppose so that we should be watching."
+    },
+    {
+        "timestamp": "1129.00s",
+        "speaker": [
+            "Craig Mestel"
+        ],
+        "text": " Yeah, I'll call on us."
+    },
+    {
+        "timestamp": "1132.00s",
+        "speaker": [
+            "Christie Lennev"
+        ],
+        "text": " So the good news is in Q4, we had our smallest decline over several quarters."
+    },
+    {
+        "timestamp": "1139.00s",
+        "speaker": [
+            "Christie Lennev"
+        ],
+        "text": " So we only went down by a tenth of a point."
+    },
+    {
+        "timestamp": "1142.00s",
+        "speaker": [
+            "Christie Lennev"
+        ],
+        "text": " The quarter previous was point six or six tenths of a point and the quarter before that was a full point."
+    },
+    {
+        "timestamp": "1148.00s",
+        "speaker": [
+            "Christie Lennev"
+        ],
+        "text": " So."
+    },
+    {
+        "timestamp": "1150.00s",
+        "speaker": [
+            "Christie Lennev"
+        ],
+        "text": " We see this as an improvement, even though it was still a decline, but it's still a decline."
+    },
+    {
+        "timestamp": "1156.00s",
+        "speaker": [
+            "Christie Lennev"
+        ],
+        "text": " Obviously, we want this actually tracking in an upward direction."
+    },
+    {
+        "timestamp": "1159.00s",
+        "speaker": [
+            "Christie Lennev"
+        ],
+        "text": " And we also don't have enough data to know whether or not this is an actual real trend up."
+    },
+    {
+        "timestamp": "1164.00s",
+        "speaker": [
+            "Christie Lennev"
+        ],
+        "text": " So I'm optimistic."
+    },
+    {
+        "timestamp": "1166.00s",
+        "speaker": [
+            "Christie Lennev"
+        ],
+        "text": " I think this is a good thing."
+    },
+    {
+        "timestamp": "1168.00s",
+        "speaker": [
+            "Christie Lennev"
+        ],
+        "text": " We have had a much keener focus on us over the past several quarters."
+    },
+    {
+        "timestamp": "1172.00s",
+        "speaker": [
+            "Christie Lennev"
+        ],
+        "text": " So that's why I think, okay, the work that we've done, I think actually is catching up and getting noticed in sus, but we got to keep an eye on it."
+    },
+    {
+        "timestamp": "1181.00s",
+        "speaker": [
+            "Christie Lennev"
+        ],
+        "text": " We can't."
+    },
+    {
+        "timestamp": "1182.00s",
+        "speaker": [
+            "Christie Lennev"
+        ],
+        "text": " We cannot assume that that's the case."
+    },
+    {
+        "timestamp": "1190.00s",
+        "speaker": [
+            "Christie Lennev"
+        ],
+        "text": " Yeah, and the bug discussion above just kind of points out that like we have an underlying problem right now in our metrics measurement."
+    },
+    {
+        "timestamp": "1198.00s",
+        "speaker": [
+            "Christopher Le"
+        ],
+        "text": " So if we change the measurements to reflect that, then hopefully we're in good shape."
+    },
+    {
+        "timestamp": "1201.00s",
+        "speaker": [
+            "Sid Sijbrandij"
+        ],
+        "text": " If we don't and we flat line and address it so that we flat line open S1s and S2s, you will see a temporary jump in and above SLOs."
+    },
+    {
+        "timestamp": "1211.00s",
+        "speaker": [
+            "Christopher Le;"
+        ],
+        "text": " And as we clear out that back, I'll go over that period of time."
+    },
+    {
+        "timestamp": "1218.00s",
+        "speaker": [
+            "Christopher Le"
+        ],
+        "text": " And I have points C, which is similar to infrastructure."
+    },
+    {
+        "timestamp": "1221.00s",
+        "speaker": [
+            "Eric Johnson"
+        ],
+        "text": " We need to get more security work prioritized or hearing that from the team, but neither that problem or that activity is sort of currently reflected in our security metrics."
+    },
+    {
+        "timestamp": "1228.00s",
+        "speaker": [
+            "Eric Johnson"
+        ],
+        "text": " So we have some work to do long term to make sure the we see things like that in the metrics and the measurements that we're making."
+    },
+    {
+        "timestamp": "1243.00s",
+        "speaker": [
+            "Eric Johnson"
+        ],
+        "text": " So back to you, sit 10."
+    },
+    {
+        "timestamp": "1246.00s",
+        "speaker": [
+            "Eric Johnson"
+        ],
+        "text": " Now, MR rate seems significantly below target."
+    },
+    {
+        "timestamp": "1251.00s",
+        "speaker": [
+            "Sid Sijbrandij"
+        ],
+        "text": " And maybe I helped that it would bounce back from December. I think it bounced back, but not back on target any any context there what's going on."
+    },
+    {
+        "timestamp": "1264.00s",
+        "speaker": [
+            "Sid Sijbrandij"
+        ],
+        "text": " Yeah, so with family and friends days, we actually had some heavier of vacation days."
+    },
+    {
+        "timestamp": "1273.00s",
+        "speaker": [
+            "Christopher Le:"
+        ],
+        "text": " And in January, then we historically have one thing to know is that we are actually at a higher MR rate."
+    },
+    {
+        "timestamp": "1281.00s",
+        "speaker": [
+            "Christopher Le:"
+        ],
+        "text": " If you look, if you go back the last 18 months, we're actually at a higher MR rate than we were back in each month this year."
+    },
+    {
+        "timestamp": "1289.00s",
+        "speaker": [
+            "Christopher Le_"
+        ],
+        "text": " So if you compare October to October, November to November and January, I'm sorry, October, November, December and January, comparatively to last year, which will find us were between a half point and a one point."
+    },
+    {
+        "timestamp": "1302.00s",
+        "speaker": [
+            "Christopher Le;"
+        ],
+        "text": " One point five MR rate above where we were in the month of previous year."
+    },
+    {
+        "timestamp": "1308.00s",
+        "speaker": [
+            "Christopher Le;"
+        ],
+        "text": " That's great contact. Thank you, Chris, for good work."
+    },
+    {
+        "timestamp": "1312.00s",
+        "speaker": [
+            "Sid Sijbrandij"
+        ],
+        "text": " Yeah, so the expectation is is that February is a short month. We were at I think 16 work days with friends and family day and other things."
+    },
+    {
+        "timestamp": "1323.00s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " Obviously seven carriages in Texas doesn't help things either for the folks who are working in Texas."
+    },
+    {
+        "timestamp": "1329.00s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " But hopefully the rest of the team is being effective."
+    },
+    {
+        "timestamp": "1332.00s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " I was hoping to see a better result right now, but with four or five days, particularly around release week."
+    },
+    {
+        "timestamp": "1337.00s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " That's usually when we see do do see a little bit higher activity. So that's not a kind of for yet."
+    },
+    {
+        "timestamp": "1343.00s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " But you know, Marches, Marches when I'm expecting kind of see a real rebound much like we did last year."
+    },
+    {
+        "timestamp": "1349.00s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " Awesome. Thanks."
+    },
+    {
+        "timestamp": "1351.00s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " The other context I'll give is we now do time series targets. So when we change the target, you'll see they're reflected in the line."
+    },
+    {
+        "timestamp": "1358.00s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " So if we were to look back historically here, the goal here was actually lower and Christopher was ambitious and we kept raising it, we kept meeting that."
+    },
+    {
+        "timestamp": "1365.00s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " So it should stare step here and we could go back and reconstruct that if we really wanted to."
+    },
+    {
+        "timestamp": "1370.00s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " And then ignoring the sort of the seasonal dip here, we raised it to I think 11 and then we realized we're kind of hitting that point of doing"
+    },
+    {
+        "timestamp": "1378.00s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " and raising returns and the right thing to do business wise. And this is in our FY 22 direction is hold the line at productivity."
+    },
+    {
+        "timestamp": "1386.00s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " But start to raise other things related to quality security availability and what."
+    },
+    {
+        "timestamp": "1392.00s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " So that's kind of what you are, you're seeing this bump is we raised it and we realized, okay, that's not the we shouldn't raise it anymore."
+    },
+    {
+        "timestamp": "1398.00s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " And we brought it back down to 10. So 10 will be the dark going forward. I'm going to try to get better a lot of other things while preventing this from dipping."
+    },
+    {
+        "timestamp": "1406.00s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " And just want to call out that it's not necessarily like higher MR rates should also help to address security and quality and other things because you're more productivity can fix more things. So it's not necessarily opposite."
+    },
+    {
+        "timestamp": "1419.00s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " But I agree with that."
+    },
+    {
+        "timestamp": "1422.00s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " Let's hold the line 10 is then is a great number and and focus on other indicators to improve that makes it on a sense."
+    },
+    {
+        "timestamp": "1431.00s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " So we'll say."
+    },
+    {
+        "timestamp": "1436.00s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " All right, that's the agenda and you want to want to vocalize anything else."
+    },
+    {
+        "timestamp": "1443.00s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " Great, well, thanks everybody and I'm going to go check on my four year old and see if she got what whatever she needed. So cheers and toxic."
+    }
+]

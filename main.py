@@ -5,7 +5,7 @@ import time
 from meetbot import GoogleMeetRecorder, MSTeamsRecorder, ZoomMeetingRecorder
 import json
 from transcription import convert_mp4_to_wav, diarize_audio, match_speakers_to_transcript, transcribe_audio, trim_audio
-from video_processing import TeamsProcessor, GoogleMeetProcessor
+from video_processing import TeamsProcessor, GoogleMeetProcessor, ZoomProcessor
 import time
 import re
 import torch.multiprocessing as mp
@@ -175,6 +175,9 @@ def get_video_ocr_results(video_path, choice, file2_path):
     elif choice == "2":
         processor = TeamsProcessor(video_path, file2_path) 
         processor.process_video()
+    elif choice == "3":
+        processor = ZoomProcessor(video_path, file2_path) 
+        processor.process_video()
         
     # time.sleep(8)
 
@@ -183,7 +186,8 @@ def initialize():
         print("\n=== Meeting Recorder ===")
         print("1. Google Meet")
         print("2. Microsoft Teams")
-        print("3. Exit")
+        print("3. Zoom")
+        print("4. Exit")
         
         choice = input("Please enter your numeric choice: ").strip()
         
@@ -192,10 +196,12 @@ def initialize():
         elif choice == "2":
             prefix = "teams"
         elif choice == "3":
+            prefix = "zoom"
+        elif choice == "4":
             print("Exiting program...")
             exit(0)
         else:
-            print("Invalid choice! Please enter 1, 2, or 3.")
+            print("Invalid choice! Please enter 1, 2, 3 or 4.")
             continue  # Restart menu loop
         
         # Define file paths dynamically based on the chosen meeting type
@@ -212,6 +218,6 @@ def initialize():
 
 
 if __name__ == "__main__":
-    print(os.cpu_count()) 
+    print("CPU Count : ", os.cpu_count()) 
     mp.set_start_method("spawn", force=True)
     initialize()
