@@ -1,0 +1,1932 @@
+[
+    {
+        "timestamp": "0.00s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " This is the homepage or basically you can call the hero section of the radio app."
+    },
+    {
+        "timestamp": "8.40s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " So scrolling down would be there some stats section and then below would be the content"
+    },
+    {
+        "timestamp": "11.88s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " section and moving down would be the features which are app offers."
+    },
+    {
+        "timestamp": "20.32s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " Scrolling down would be a demo section where we can watch the demo of our application and"
+    },
+    {
+        "timestamp": "25.24s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " if we want to watch the full demo it will doubt us to the YouTube video and this is the"
+    },
+    {
+        "timestamp": "29.24s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " coming up next section or where we will be showing our upcoming features of that and"
+    },
+    {
+        "timestamp": "34.40s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " this is a testing module section and this is the contact section where a user can give"
+    },
+    {
+        "timestamp": "39.52s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " some feedback or contact the support team and this is the footer."
+    },
+    {
+        "timestamp": "44.36s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " This is basically the homepage or this radio app."
+    },
+    {
+        "timestamp": "48.44s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " Moving on to the login page."
+    },
+    {
+        "timestamp": "52.08s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " So once the user gets logged in so we have now two options, x-ray and this is and that"
+    },
+    {
+        "timestamp": "56.84s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " is good one."
+    },
+    {
+        "timestamp": "57.84s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " So moving on to the x-ray and this is clean."
+    },
+    {
+        "timestamp": "61.56s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " So this is the x-ray and this is where the user uploads the icon and the PNG images."
+    },
+    {
+        "timestamp": "65.08s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " So that means you have to upload it."
+    },
+    {
+        "timestamp": "68.32s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " Yeah."
+    },
+    {
+        "timestamp": "69.32s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " So this is the upload page."
+    },
+    {
+        "timestamp": "88.28s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " So user uploads some die-com or PNG images."
+    },
+    {
+        "timestamp": "98.88s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " So meanwhile the images get uploaded."
+    },
+    {
+        "timestamp": "102.48s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " They are getting analyzed by the AI model and the patient data."
+    },
+    {
+        "timestamp": "105.32s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " If there is some patient data present in the icon file then that gets extracted and is"
+    },
+    {
+        "timestamp": "109.76s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " presented in the table."
+    },
+    {
+        "timestamp": "111.48s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " Otherwise the patient ID gets a unique patient ID generated from the backend and then they"
+    },
+    {
+        "timestamp": "118.12s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " get that gets shown to the table which is presented here."
+    },
+    {
+        "timestamp": "124.00s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " So the icon files and the PNG files which I uploaded are processed and the doctors will"
+    },
+    {
+        "timestamp": "128.16s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " accept the details of the patient."
+    },
+    {
+        "timestamp": "146.28s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " So once the doctor fills up the details of the patient and he clicks on then I analyze"
+    },
+    {
+        "timestamp": "149.68s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " what is in."
+    },
+    {
+        "timestamp": "150.68s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " So the main operation page of the case is opens up."
+    },
+    {
+        "timestamp": "154.32s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " So the left part denotes the toolbar which in the user operates."
+    },
+    {
+        "timestamp": "159.80s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " So here is the smart zoom, and the content and the heat map are different pages."
+    },
+    {
+        "timestamp": "164.56s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " These are not tools and this is the zoom in, zoom out button, brightness and other contours"
+    },
+    {
+        "timestamp": "170.60s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " and the other toolbars which are necessary for the doctor."
+    },
+    {
+        "timestamp": "174.96s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " And annotate tool routes us to the different page and this is the add node button where"
+    },
+    {
+        "timestamp": "180.08s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " the doctor can add some feedback or some notes."
+    },
+    {
+        "timestamp": "183.32s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " So here is the patient ID and the similar cases."
+    },
+    {
+        "timestamp": "187.56s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " So similar cases are the cases in which the similar diseases are found and the patient"
+    },
+    {
+        "timestamp": "192.72s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " ID is the patient's disease patient is just created as of now."
+    },
+    {
+        "timestamp": "195.72s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " So the patient ID would be only one."
+    },
+    {
+        "timestamp": "198.28s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " And here the doctor can select the view of the exe."
+    },
+    {
+        "timestamp": "200.56s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " So that will also get separated."
+    },
+    {
+        "timestamp": "203.80s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " And in the middle section is the main exe and this is page where the abnormality would"
+    },
+    {
+        "timestamp": "208.16s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " be seen."
+    },
+    {
+        "timestamp": "209.16s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " In the right section would be the user can route to different pages throughout the application"
+    },
+    {
+        "timestamp": "213.72s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " and this is the TV probability which a model has detected and this is the abnormality"
+    },
+    {
+        "timestamp": "218.04s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " which the model has wound and this is the download button, download the image of the image"
+    },
+    {
+        "timestamp": "222.72s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " which is centered here like this."
+    },
+    {
+        "timestamp": "226.88s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " Yeah."
+    },
+    {
+        "timestamp": "228.04s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " So moving on to the different pages."
+    },
+    {
+        "timestamp": "233.44s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " So firstly would be the annotate page."
+    },
+    {
+        "timestamp": "236.80s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " So the annotation toolbar where the doctor annotates on the image."
+    },
+    {
+        "timestamp": "240.04s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " So he clicks on the balls annotation and type some label and there's annotation and"
+    },
+    {
+        "timestamp": "244.48s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " click on the same annotation so the annotation gets saved."
+    },
+    {
+        "timestamp": "248.08s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " Now moving on to the heat map option."
+    },
+    {
+        "timestamp": "250.24s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " So the heat map which is generated by the model is presented here."
+    },
+    {
+        "timestamp": "253.60s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " For more in depth view user can adjust the contrast and basically zoom into the heat"
+    },
+    {
+        "timestamp": "258.00s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " maps for a more better view."
+    },
+    {
+        "timestamp": "260.64s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " And moving on to the quadrant page."
+    },
+    {
+        "timestamp": "262.20s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " So here would be the different images would be displayed as of what the quadrant page."
+    },
+    {
+        "timestamp": "267.12s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " So normal with doctor which has annotated heat map and the other images would be shown"
+    },
+    {
+        "timestamp": "271.92s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " here."
+    },
+    {
+        "timestamp": "272.92s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " CTR of this images were not found."
+    },
+    {
+        "timestamp": "274.68s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " So there was a blank image here."
+    },
+    {
+        "timestamp": "277.04s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " Cligh bones up there is then the negative."
+    },
+    {
+        "timestamp": "279.32s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " Now moving on to the last page would be the report section."
+    },
+    {
+        "timestamp": "281.48s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " So here are three different report formats."
+    },
+    {
+        "timestamp": "283.32s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " First would be the standard report, detailed report and the diagnostic report."
+    },
+    {
+        "timestamp": "287.04s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " The full diagnostic report is like the main report where all the findings and all the abnormalities"
+    },
+    {
+        "timestamp": "292.52s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " which are found by the I moded in a different transformed images which were generated are"
+    },
+    {
+        "timestamp": "296.64s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " shown in this whole diagnostic report."
+    },
+    {
+        "timestamp": "298.92s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " Standard report is like the basic report."
+    },
+    {
+        "timestamp": "300.64s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " So this report takes some time to download."
+    },
+    {
+        "timestamp": "303.24s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " So once it gets downloaded here is the full report format like the referred physician"
+    },
+    {
+        "timestamp": "307.72s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " and the patient details and the abnormalities on the TV possibility score and the original"
+    },
+    {
+        "timestamp": "312.44s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " X-Temages and the heat map of the X-Tem and other transformed images are found by the"
+    },
+    {
+        "timestamp": "316.44s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " model."
+    },
+    {
+        "timestamp": "317.44s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " Now moving on to the dashboard."
+    },
+    {
+        "timestamp": "322.60s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " So here is the stat section which like patients X-rays, abnormal X-rays and the normal X-rays"
+    },
+    {
+        "timestamp": "328.32s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " which are found by the which are given by the doctor."
+    },
+    {
+        "timestamp": "331.84s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " Here is the X-ray cases which are total according to the day wise and here is the top"
+    },
+    {
+        "timestamp": "336.56s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " the common abnormalities."
+    },
+    {
+        "timestamp": "337.56s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " These are the various some these are some stat section which are relevant to the doctor."
+    },
+    {
+        "timestamp": "342.12s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " So we have also invented a heat map view."
+    },
+    {
+        "timestamp": "344.36s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " So once this is the more in depth view like where is the more number of abnormalities"
+    },
+    {
+        "timestamp": "352.20s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " are present in a particular location."
+    },
+    {
+        "timestamp": "354.16s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " Once that is loaded out doctor can get an in depth view of this like this one."
+    },
+    {
+        "timestamp": "359.20s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " So we have also implemented a recent X-ray section."
+    },
+    {
+        "timestamp": "364.12s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " So here can doctor can view some recent X-rays and some metadata here."
+    },
+    {
+        "timestamp": "368.00s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " So here the dichomes metadata gets extracted once we upload the icon find and here the profile"
+    },
+    {
+        "timestamp": "372.80s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " section of the doctor."
+    },
+    {
+        "timestamp": "378.16s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " And this is then a box page."
+    },
+    {
+        "timestamp": "380.16s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " Sorry."
+    },
+    {
+        "timestamp": "381.72s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " No, please."
+    },
+    {
+        "timestamp": "382.72s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " So basically as we were discussing this is the radioIQ application that is that will be"
+    },
+    {
+        "timestamp": "392.28s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " taking X-ray, dichome file as an input and will be providing the analysis and all of those"
+    },
+    {
+        "timestamp": "401.00s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " features to the user."
+    },
+    {
+        "timestamp": "403.88s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " So yeah, this is the application."
+    },
+    {
+        "timestamp": "407.28s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " So now Pooja and Pavan if you can add your views onto this."
+    },
+    {
+        "timestamp": "418.68s",
+        "speaker": [
+            "SPEAKER_06"
+        ],
+        "text": " I just understand the flow sir."
+    },
+    {
+        "timestamp": "421.12s",
+        "speaker": [
+            "SPEAKER_06"
+        ],
+        "text": " I just need only postman collection of application and one requirement for a front end design"
+    },
+    {
+        "timestamp": "431.96s",
+        "speaker": [
+            "SPEAKER_06"
+        ],
+        "text": " on application that we have multiple options in while image selecting and get multiple"
+    },
+    {
+        "timestamp": "441.72s",
+        "speaker": [
+            "SPEAKER_06"
+        ],
+        "text": " options like edit X-ray image and many more things that's I need one UI X designer."
+    },
+    {
+        "timestamp": "452.52s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " Okay."
+    },
+    {
+        "timestamp": "453.52s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " So to design like the mobile."
+    },
+    {
+        "timestamp": "457.76s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " Yes sir."
+    },
+    {
+        "timestamp": "458.76s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " Okay."
+    },
+    {
+        "timestamp": "459.76s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " Yeah."
+    },
+    {
+        "timestamp": "460.76s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " So Pooja, do we have anyone who is like a UI X designer from who can design like the mobile"
+    },
+    {
+        "timestamp": "468.04s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " application?"
+    },
+    {
+        "timestamp": "469.04s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " Actually, I have only one developer here for the UI X."
+    },
+    {
+        "timestamp": "478.96s",
+        "speaker": [
+            "SPEAKER_05"
+        ],
+        "text": " For that, I think I need to connect with this answer to talk about what."
+    },
+    {
+        "timestamp": "485.56s",
+        "speaker": [
+            "SPEAKER_05"
+        ],
+        "text": " And another thing I also request to like, I actually we need also the system this way."
+    },
+    {
+        "timestamp": "494.20s",
+        "speaker": [
+            "SPEAKER_05"
+        ],
+        "text": " How exactly your system is working that document is also required I guess, Pavan."
+    },
+    {
+        "timestamp": "500.40s",
+        "speaker": [
+            "SPEAKER_05"
+        ],
+        "text": " Yes."
+    },
+    {
+        "timestamp": "501.40s",
+        "speaker": [
+            "SPEAKER_05"
+        ],
+        "text": " Yes, man."
+    },
+    {
+        "timestamp": "505.68s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " So what we can do is so as you were discussing first thing that we are going to develop in"
+    },
+    {
+        "timestamp": "510.20s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " that right before that we need to design the layout of the application for that we need"
+    },
+    {
+        "timestamp": "519.68s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " a UI UX designer."
+    },
+    {
+        "timestamp": "521.80s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " So that part."
+    },
+    {
+        "timestamp": "522.96s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " So if you can like check if there is someone we can contribute from our site but like actually"
+    },
+    {
+        "timestamp": "528.12s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " we are like very much occupied over here."
+    },
+    {
+        "timestamp": "530.32s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " So we will not be able to work dedicatively on this design part."
+    },
+    {
+        "timestamp": "534.24s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " So if there is anyone who can dedicatively work on the design part, we can provide the input"
+    },
+    {
+        "timestamp": "538.44s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " from our site."
+    },
+    {
+        "timestamp": "539.92s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " And another thing is that the API documentation that we will be able to provide as I said by"
+    },
+    {
+        "timestamp": "548.16s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " middle of the next week and system architecture of as of now we do not have document prepared."
+    },
+    {
+        "timestamp": "555.76s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " We are working on that as still but whatever details you would be needing that we will be"
+    },
+    {
+        "timestamp": "559.92s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " able to like update you on that part."
+    },
+    {
+        "timestamp": "562.20s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " If you if you still feel like that whatever we have, we will share that if you still feel"
+    },
+    {
+        "timestamp": "566.32s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " like that you need additional details."
+    },
+    {
+        "timestamp": "569.52s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " Do let us know we will directly update you."
+    },
+    {
+        "timestamp": "574.80s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " And oh yeah one thing very important thing I missed so sorry everyone."
+    },
+    {
+        "timestamp": "579.24s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " So the introduction part actually we had not introduced ourselves."
+    },
+    {
+        "timestamp": "584.68s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " Pujama and Babin if you can please start from your side."
+    },
+    {
+        "timestamp": "589.08s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " Okay."
+    },
+    {
+        "timestamp": "590.08s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " So like my little bit more to talk about it and I am not reacting to tablet."
+    },
+    {
+        "timestamp": "601.52s",
+        "speaker": [
+            "SPEAKER_05"
+        ],
+        "text": " You can say full stack developer."
+    },
+    {
+        "timestamp": "603.68s",
+        "speaker": [
+            "SPEAKER_05"
+        ],
+        "text": " So I am not comfortable with the mobile application development but you can still understanding"
+    },
+    {
+        "timestamp": "610.88s",
+        "speaker": [
+            "SPEAKER_05"
+        ],
+        "text": " the requirements analysis and I can help him to understand in the part of the developing."
+    },
+    {
+        "timestamp": "618.12s",
+        "speaker": [
+            "SPEAKER_05"
+        ],
+        "text": " And I have like a full four year experience in development before that I also working"
+    },
+    {
+        "timestamp": "626.52s",
+        "speaker": [
+            "SPEAKER_05"
+        ],
+        "text": " as a professor in child sacrifice."
+    },
+    {
+        "timestamp": "632.36s",
+        "speaker": [
+            "SPEAKER_05"
+        ],
+        "text": " Thank you."
+    },
+    {
+        "timestamp": "633.36s",
+        "speaker": [
+            "SPEAKER_05"
+        ],
+        "text": " Babin."
+    },
+    {
+        "timestamp": "634.36s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " Yes."
+    },
+    {
+        "timestamp": "635.36s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " Myself Babin."
+    },
+    {
+        "timestamp": "636.36s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " Part of and from Rajasthan actually and I have a 2.5 experience in mobile application"
+    },
+    {
+        "timestamp": "645.64s",
+        "speaker": [
+            "SPEAKER_06"
+        ],
+        "text": " development like native iOS, React native and flutter also and I know about backend"
+    },
+    {
+        "timestamp": "651.00s",
+        "speaker": [
+            "SPEAKER_06"
+        ],
+        "text": " technology like Norge as Python and many more languages but I still working on mobile"
+    },
+    {
+        "timestamp": "658.40s",
+        "speaker": [
+            "SPEAKER_06"
+        ],
+        "text": " application development."
+    },
+    {
+        "timestamp": "660.20s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " Thank you."
+    },
+    {
+        "timestamp": "662.20s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " Yeah."
+    },
+    {
+        "timestamp": "663.20s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " Hi I am Aditya Raj Mandlam."
+    },
+    {
+        "timestamp": "668.12s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " I am acting as a solution architect and lead of infinity UI that is software development"
+    },
+    {
+        "timestamp": "674.20s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " team from IT Kanpur office and I have my team over here as well and alongside my team"
+    },
+    {
+        "timestamp": "684.28s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " we also have our manager coordinator and like AI ML team leaders as well."
+    },
+    {
+        "timestamp": "691.68s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " So yeah."
+    },
+    {
+        "timestamp": "692.68s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " Sahil."
+    },
+    {
+        "timestamp": "693.68s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " Hi everyone."
+    },
+    {
+        "timestamp": "694.68s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " My name is Sahil Mora."
+    },
+    {
+        "timestamp": "695.68s",
+        "speaker": [
+            "SPEAKER_03"
+        ],
+        "text": " Am I audio well?"
+    },
+    {
+        "timestamp": "696.68s",
+        "speaker": [
+            "SPEAKER_03"
+        ],
+        "text": " Yeah."
+    },
+    {
+        "timestamp": "697.68s",
+        "speaker": [
+            "SPEAKER_03"
+        ],
+        "text": " Yeah."
+    },
+    {
+        "timestamp": "698.68s",
+        "speaker": [
+            "SPEAKER_03"
+        ],
+        "text": " Okay."
+    },
+    {
+        "timestamp": "699.68s",
+        "speaker": [
+            "SPEAKER_03"
+        ],
+        "text": " So my name is Sahil Mora and I am an ML engineer and I have 8 months of experience."
+    },
+    {
+        "timestamp": "711.08s",
+        "speaker": [
+            "SPEAKER_03"
+        ],
+        "text": " So basically I am taking care of the ML side of this project with my team."
+    },
+    {
+        "timestamp": "718.32s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " Hello."
+    },
+    {
+        "timestamp": "725.32s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " Hello."
+    },
+    {
+        "timestamp": "726.32s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " Hello."
+    },
+    {
+        "timestamp": "727.32s",
+        "speaker": [
+            "SPEAKER_01"
+        ],
+        "text": " Hello."
+    },
+    {
+        "timestamp": "728.32s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " Hello."
+    },
+    {
+        "timestamp": "729.32s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " Hello."
+    },
+    {
+        "timestamp": "730.32s",
+        "speaker": [
+            "SPEAKER_01"
+        ],
+        "text": " Hello."
+    },
+    {
+        "timestamp": "731.32s",
+        "speaker": [
+            "SPEAKER_01"
+        ],
+        "text": " Yes."
+    },
+    {
+        "timestamp": "732.32s",
+        "speaker": [
+            "SPEAKER_00",
+            "SPEAKER_01"
+        ],
+        "text": " So good morning everyone."
+    },
+    {
+        "timestamp": "734.32s",
+        "speaker": [
+            "SPEAKER_01"
+        ],
+        "text": " Amarush."
+    },
+    {
+        "timestamp": "735.32s",
+        "speaker": [
+            "SPEAKER_01"
+        ],
+        "text": " I am leading the tabi version project and I am leading with the AI side."
+    },
+    {
+        "timestamp": "742.32s",
+        "speaker": [
+            "SPEAKER_01"
+        ],
+        "text": " Okay."
+    },
+    {
+        "timestamp": "743.32s",
+        "speaker": [
+            "SPEAKER_01"
+        ],
+        "text": " Yeah."
+    },
+    {
+        "timestamp": "744.32s",
+        "speaker": [
+            "SPEAKER_01"
+        ],
+        "text": " Sorry."
+    },
+    {
+        "timestamp": "746.32s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " Okay."
+    },
+    {
+        "timestamp": "747.32s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " Okay."
+    },
+    {
+        "timestamp": "748.32s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " So one thing is it."
+    },
+    {
+        "timestamp": "750.32s",
+        "speaker": [
+            "SPEAKER_03"
+        ],
+        "text": " We are actually need to get started pretty fast on this."
+    },
+    {
+        "timestamp": "754.32s",
+        "speaker": [
+            "SPEAKER_03"
+        ],
+        "text": " So like what is the first thing you guys might need and I guess a design has to be the"
+    },
+    {
+        "timestamp": "761.32s",
+        "speaker": [
+            "SPEAKER_03"
+        ],
+        "text": " first thing."
+    },
+    {
+        "timestamp": "762.32s",
+        "speaker": [
+            "SPEAKER_03"
+        ],
+        "text": " One thing we can do is we have."
+    },
+    {
+        "timestamp": "764.32s",
+        "speaker": [
+            "SPEAKER_03"
+        ],
+        "text": " We."
+    },
+    {
+        "timestamp": "765.32s",
+        "speaker": [
+            "SPEAKER_03"
+        ],
+        "text": " We can take the example of some other software."
+    },
+    {
+        "timestamp": "768.32s",
+        "speaker": [
+            "SPEAKER_03"
+        ],
+        "text": " So for example, a journey team has developed one mobile app already."
+    },
+    {
+        "timestamp": "771.32s",
+        "speaker": [
+            "SPEAKER_03"
+        ],
+        "text": " So maybe we can get to those screenshots of that and we can begin with a group in itself"
+    },
+    {
+        "timestamp": "778.32s",
+        "speaker": [
+            "SPEAKER_03"
+        ],
+        "text": " that right."
+    },
+    {
+        "timestamp": "779.32s",
+        "speaker": [
+            "SPEAKER_03"
+        ],
+        "text": " And then we can like work out the final details after that and right."
+    },
+    {
+        "timestamp": "788.32s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " Is this possible."
+    },
+    {
+        "timestamp": "790.32s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " Yeah, I think so."
+    },
+    {
+        "timestamp": "792.32s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " So as like we were discussing before this so we need one person who can work on the design"
+    },
+    {
+        "timestamp": "799.32s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " of the mobile application and whatever feedback is required and whatever we feel like that."
+    },
+    {
+        "timestamp": "806.32s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " How it should be that we can."
+    },
+    {
+        "timestamp": "808.32s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " Silestay from AML team and like myself and then Madhavansha is there from my team Madhavansha"
+    },
+    {
+        "timestamp": "814.32s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " Arthak Modit."
+    },
+    {
+        "timestamp": "816.32s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " And we have the core of such a love as well."
+    },
+    {
+        "timestamp": "820.32s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " So they are like from my team."
+    },
+    {
+        "timestamp": "823.32s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " So whoever would be present at the moment will be able to update whatever requirement is there."
+    },
+    {
+        "timestamp": "828.32s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " And I see like in the chat you have put."
+    },
+    {
+        "timestamp": "834.32s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " So API documentation as I said, like we'll be able to provide like middle of the next week that is fine."
+    },
+    {
+        "timestamp": "839.32s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " UI UX developer that is something that we need to check in."
+    },
+    {
+        "timestamp": "843.32s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " WAPI itself."
+    },
+    {
+        "timestamp": "845.32s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " When we can start to expect to start work."
+    },
+    {
+        "timestamp": "848.32s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " So actually we have to start like as soon as possible at earliest system design workflow."
+    },
+    {
+        "timestamp": "854.32s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " Whatever update we have we will provide you and if anything would be missed please do let us know."
+    },
+    {
+        "timestamp": "859.32s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " We will update as we will go API collection from postman API collection."
+    },
+    {
+        "timestamp": "866.32s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " I think so API documentation will be sufficient."
+    },
+    {
+        "timestamp": "870.32s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " Do we separately need API collection for postman because we have not like over here multiple developers are using different ways to validate the API."
+    },
+    {
+        "timestamp": "883.32s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " So."
+    },
+    {
+        "timestamp": "888.32s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " So I have one things if application is on priority then I just work from myself like UI will be designed on my thing."
+    },
+    {
+        "timestamp": "902.32s",
+        "speaker": [
+            "SPEAKER_06"
+        ],
+        "text": " That is my thing and I just need only a pay and points."
+    },
+    {
+        "timestamp": "909.32s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " Fine so the if you want to like get design as per your choice that is fine."
+    },
+    {
+        "timestamp": "915.32s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " It's just the UX part we will have to make ensure that it looks like how the web application is web application and mobile application should not look too much different as well as like what we want to convey the how the flow of web application is we want to like similar kind of flow for mobile application as well."
+    },
+    {
+        "timestamp": "936.32s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " So just that part we will be looking into the design but if you want to like shift few things as per like your development part that is absolutely fine no problem."
+    },
+    {
+        "timestamp": "949.32s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " Okay, sir."
+    },
+    {
+        "timestamp": "952.32s",
+        "speaker": [
+            "SPEAKER_06"
+        ],
+        "text": " I just shared that point because application is on priority that's why I just tell my totally get it."
+    },
+    {
+        "timestamp": "962.32s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " Yeah, I totally get that part."
+    },
+    {
+        "timestamp": "965.32s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " Yeah."
+    },
+    {
+        "timestamp": "968.32s",
+        "speaker": [
+            "SPEAKER_00"
+        ],
+        "text": " So other term of in what I can suggest you let's do one thing other term let's share that recording of mobile application developed by Chennai along with the web app which they designed so that he will get an idea of like how web app moves to mobile development and are radio IQ."
+    },
+    {
+        "timestamp": "989.32s",
+        "speaker": [
+            "SPEAKER_00"
+        ],
+        "text": " So that he can get an idea of that like how the flow and he just plan to develop something or towards UI UX the designing part mean when you can work towards APIs and other documentation."
+    },
+    {
+        "timestamp": "1002.32s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " Right. Yeah, not that that will work."
+    },
+    {
+        "timestamp": "1005.32s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " Yeah."
+    },
+    {
+        "timestamp": "1010.32s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " There are nothing but whatever you need this is the complete team was working so a side is there who is specifically on this radio IQ project."
+    },
+    {
+        "timestamp": "1022.32s",
+        "speaker": [
+            "SPEAKER_00"
+        ],
+        "text": " Are you the lead of another project that is also towards AI and right now we are into mobile development of radio IQ."
+    },
+    {
+        "timestamp": "1033.32s",
+        "speaker": [
+            "SPEAKER_00"
+        ],
+        "text": " So from the AI ML site, Sahil is there to help you out and raise the complete you will help you out towards software site."
+    },
+    {
+        "timestamp": "1041.32s",
+        "speaker": [
+            "SPEAKER_00"
+        ],
+        "text": " So whatever need you have you can coordinate with them or if you have any concern even Pooja have any concern they can coordinate with me as well."
+    },
+    {
+        "timestamp": "1052.32s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " So we will set up another meetings and what way of communication you want we will only coordinate accordingly."
+    },
+    {
+        "timestamp": "1061.32s",
+        "speaker": [
+            "SPEAKER_00"
+        ],
+        "text": " Right and I will request one more thing that in all on like further communications please to include I'll like in I'll share the MOM so in that my teams DL will be there email DL alongside that please to include Sahil Aros Pratipa Maaman Amir sir."
+    },
+    {
+        "timestamp": "1084.32s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " In all the further communication so that everyone is on the same page."
+    },
+    {
+        "timestamp": "1092.32s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " All right, this was for radio IQ now Pooja ma'm another one application is that is Tycompixel so I as you were saying that there is one more developer but he is only so whenever he joins back let's connect for that and we will share the second part with him so that he can work on that will that be okay."
+    },
+    {
+        "timestamp": "1113.32s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " Or you want like we should show it here it's I think we will be back on that's really."
+    },
+    {
+        "timestamp": "1123.32s",
+        "speaker": [
+            "SPEAKER_05",
+            "SPEAKER_06"
+        ],
+        "text": " So I mean priorities radio IQ so let's start with that and whenever the second developer comes back so I will share like the second application that needs to be developed."
+    },
+    {
+        "timestamp": "1139.32s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " All right anything else any man."
+    },
+    {
+        "timestamp": "1149.32s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " No sir."
+    },
+    {
+        "timestamp": "1154.32s",
+        "speaker": [
+            "SPEAKER_03"
+        ],
+        "text": " One thing I mean are you also working on some other project right now."
+    },
+    {
+        "timestamp": "1160.32s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " Yes sir."
+    },
+    {
+        "timestamp": "1161.32s",
+        "speaker": [
+            "SPEAKER_06"
+        ],
+        "text": " Is your answer give me a task like made a Google assistant like application."
+    },
+    {
+        "timestamp": "1168.32s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " Okay so I feel like we are like only 1% of the thing that I'm all up in 3 weeks I think that's already too much so."
+    },
+    {
+        "timestamp": "1180.32s",
+        "speaker": [
+            "SPEAKER_06",
+            "SPEAKER_03"
+        ],
+        "text": " Like is it possible that you only work on one thing or like I don't know it seems excessive to me or actually like do you any manage both of them."
+    },
+    {
+        "timestamp": "1193.32s",
+        "speaker": [
+            "SPEAKER_06"
+        ],
+        "text": " No no sir I will manage it."
+    },
+    {
+        "timestamp": "1195.32s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " Please call me Sahil only."
+    },
+    {
+        "timestamp": "1198.32s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " Yeah."
+    },
+    {
+        "timestamp": "1201.32s",
+        "speaker": [
+            "SPEAKER_03"
+        ],
+        "text": " So okay then and so and when can you start from today."
+    },
+    {
+        "timestamp": "1209.32s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " Okay so I just talk I just talk with ishansar and tell him to tell him all project then I will start my work."
+    },
+    {
+        "timestamp": "1221.32s",
+        "speaker": [
+            "SPEAKER_03"
+        ],
+        "text": " Okay and and do you need anything before you start like anything which is the highest priority for you to start right now."
+    },
+    {
+        "timestamp": "1231.32s",
+        "speaker": [
+            "SPEAKER_06"
+        ],
+        "text": " I just need only sir API and points I doesn't need anything."
+    },
+    {
+        "timestamp": "1237.32s",
+        "speaker": [
+            "SPEAKER_06"
+        ],
+        "text": " I just create a application from my side like UI will be mine and design will be mine and I just need only color code from website for mobile application colors."
+    },
+    {
+        "timestamp": "1252.32s",
+        "speaker": [
+            "SPEAKER_06"
+        ],
+        "text": " And I so I don't need anything else."
+    },
+    {
+        "timestamp": "1256.32s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " Yeah that we can share it right away so that document we have so we'll share that part yet."
+    },
+    {
+        "timestamp": "1264.32s",
+        "speaker": [
+            "SPEAKER_02",
+            "SPEAKER_03"
+        ],
+        "text": " Okay so I think we can do so color code we can give we have we can give you the web video like I think you probably recorded right now only the web of video we can share the Chinese mobile app screenshots or video so you can you can have a nice idea to begin with."
+    },
+    {
+        "timestamp": "1282.32s",
+        "speaker": [
+            "SPEAKER_03"
+        ],
+        "text": " Another API document is it will be ready by the mid of next week maybe you can look at the app and you can ask some initial API right like a few APIs you can say like what APIs will be here and we can start talking about those also like we can give you a few of those at the beginning."
+    },
+    {
+        "timestamp": "1304.32s",
+        "speaker": [
+            "SPEAKER_03"
+        ],
+        "text": " If you want to start."
+    },
+    {
+        "timestamp": "1308.32s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " We can do that right yeah right so I think so the first thing that we can quickly finish up within this week is like the design part so what I'll do I'll share you a figma sheet okay."
+    },
+    {
+        "timestamp": "1322.32s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " The one that is having like the web application details okay and based on that only we can start like working on the mobile development design as well so let's finish that up as soon as possible."
+    },
+    {
+        "timestamp": "1335.32s",
+        "speaker": [
+            "SPEAKER_02"
+        ],
+        "text": " And till the time your design would be finalized you can also start work like on the UI part and like our API document would be done and in the meantime if you want like there is any particular API that you details that you need at front we can share like the full document we can share in middle of the next week but any specific thing that you need you please to ping on this chat channel itself we will like communicate and share to you."
+    },
+    {
+        "timestamp": "1363.32s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " Okay sir yeah okay."
+    },
+    {
+        "timestamp": "1370.32s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " All right anything sorry anyone anything else."
+    },
+    {
+        "timestamp": "1377.32s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " So what was the framework which we are going to be used for the mobile."
+    },
+    {
+        "timestamp": "1384.32s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " Better family."
+    },
+    {
+        "timestamp": "1387.32s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " So you will be going to build a cross platform for the both the iOS and Android."
+    },
+    {
+        "timestamp": "1393.32s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " Yes sir."
+    },
+    {
+        "timestamp": "1394.32s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " I mean would it impact any performance like I mean comparing to the Kotlin or script like is there any performance issues regarding that no sir."
+    },
+    {
+        "timestamp": "1406.32s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " I mean there was some like recently that react native architect and exchange like fully changed so."
+    },
+    {
+        "timestamp": "1414.32s",
+        "speaker": [
+            "SPEAKER_04"
+        ],
+        "text": " Yeah I think that's the reason we are using pleasure only so I think that's not an issue either."
+    },
+    {
+        "timestamp": "1419.32s",
+        "speaker": [
+            "SPEAKER_06"
+        ],
+        "text": " No there is no issue but we are working on under policies."
+    },
+    {
+        "timestamp": "1428.32s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " App store policies and Apple store policies."
+    },
+    {
+        "timestamp": "1443.32s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " All right then now if nothing else then we are good to close the call."
+    },
+    {
+        "timestamp": "1450.32s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " Thank you everyone."
+    },
+    {
+        "timestamp": "1452.32s",
+        "speaker": [
+            "Unknown"
+        ],
+        "text": " Thank you sir."
+    },
+    {
+        "timestamp": "1454.32s",
+        "speaker": [
+            "SPEAKER_00",
+            "SPEAKER_01"
+        ],
+        "text": " Thank you."
+    },
+    {
+        "timestamp": "1455.32s",
+        "speaker": [
+            "SPEAKER_01"
+        ],
+        "text": " My."
+    }
+]
