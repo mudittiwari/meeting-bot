@@ -1,0 +1,16 @@
+name: meetng_bot_recording
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - aiohttp
+  # - ffmpeg
+  - pip
+  - pyaudio
+  - python=3.12
+  - selenium
+  - pip:
+      - speechbrain
+      - undetected-chromedriver==3.5.5
+      - sounddevice
+      - soundfile

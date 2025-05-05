@@ -1,0 +1,32 @@
+# Ignore Python cache and compiled files
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore environment files
+.env
+*.env
+
+# Ignore Conda and pip cache
+conda-meta/
+*.conda
+*.egg-info/
+*.whl
+*.lock
+*.log
+
+# Ignore big folders or files
+data/
+checkpoints/
+logs/
+videos/
+*.mp4
+*.zip
+
+# Ignore local development files
+.vscode/
+.idea/
+.DS_Store
+
+# Optional: ignore git repo itself
+.git/

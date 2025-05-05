@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  transcription:
+    build:
+      context: .
+      dockerfile: Dockerfile.transcription
+    container_name: transcription_bot
+    command: >
+      python3 main.py
+    volumes:
+      - .:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+    tty: true

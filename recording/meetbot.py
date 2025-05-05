@@ -1,3 +1,6 @@
+import random
+import sys
+import threading
 import time
 import os
 import subprocess
@@ -7,8 +10,15 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 import signal
+import logging
 
 
+logging.basicConfig(
+    level=logging.ERROR,
+    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+)
+
+logger = logging.getLogger(__name__)
 class BaseRecorder:
     def __init__(self, meeting_url, file_output_path):
         self.meeting_url = meeting_url
@@ -20,38 +30,48 @@ class BaseRecorder:
         os.system("pulseaudio --start")
         os.system("pactl load-module module-null-sink sink_name=VirtualSink")
         os.system("pactl set-default-sink VirtualSink")
-
+        
     def start_virtual_display(self):
-        os.system("Xvfb :99 -screen 0 1920x1080x24 &")
-        os.environ["DISPLAY"] = ":99"
-
+        os.environ["DISPLAY"] = f":{99}"
+        os.system(f"Xvfb :{99} -screen 0 1920x1080x24 &")
+        
     def start_ffmpeg_recording(self):
-        self.ffmpeg_process = subprocess.Popen(
-            [
-                "ffmpeg",
-                "-y",
-                "-f", "x11grab",
-                "-r", "30",  # Force constant 30 FPS
-                "-video_size", "1920x1080",  # Reduced resolution for smoother recording
-                "-framerate", "30",
-                "-draw_mouse", "0",  # Hide mouse cursor
-                "-vsync", "2",  # Better frame synchronization
-                "-i", ":99",
-                "-f", "pulse",
-                "-i", "VirtualSink.monitor",
-                "-ac", "2",
-                "-ar", "48000",
-                "-b:a", "320k",
-                "-codec:a", "libmp3lame",
-                "-af", "highpass=f=200,lowpass=f=3000,loudnorm",
-                "-codec:v", "libx264",
-                "-preset", "ultrafast",
-                "-pix_fmt", "yuv420p",
-                self.file_output_path
-            ],
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE
-        )
+        try:
+            print("Starting FFmpeg recording...")
+            print("Output path:", self.file_output_path)
+
+            if not self.file_output_path:
+                raise ValueError("Output path is not set.")
+            os.makedirs(os.path.dirname(self.file_output_path), exist_ok=True)
+            subprocess.Popen(
+                [
+                    "ffmpeg",
+                    "-y",
+                    "-f", "x11grab",
+                    "-r", "30",
+                    "-video_size", "1920x1080",
+                    "-framerate", "30",
+                    # "-draw_mouse", "0",
+                    "-i", ":99",
+                    "-f", "pulse",
+                    "-i", "VirtualSink.monitor",
+                    "-ac", "2",
+                    "-ar", "48000",
+                    "-b:a", "320k",
+                    "-codec:a", "libmp3lame",
+                    "-af", "highpass=f=200,lowpass=f=3000,loudnorm",
+                    "-codec:v", "libx264",
+                    "-preset", "ultrafast",
+                    "-pix_fmt", "yuv420p",
+                    "-fps_mode", "cfr",
+                    self.file_output_path
+                ],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE
+            )
+        except Exception as e:
+            print("Exception occurred while starting FFmpeg:")
+            print(str(e))
 
     def setup_browser(self):
         options = uc.ChromeOptions()
@@ -70,7 +90,6 @@ class BaseRecorder:
         options.add_argument(
             "--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.6998.35 Safari/537.36"
         )
-        
         self.driver = uc.Chrome(options=options)
 
     def close_resources(self):
@@ -107,7 +126,6 @@ class GoogleMeetRecorder(BaseRecorder):
         self.setup_browser()
         self.driver.get(self.meeting_url)
         time.sleep(5)
-
         wait = WebDriverWait(self.driver, 15)
 
         try:
@@ -259,7 +277,6 @@ class MSTeamsRecorder(BaseRecorder):
             print("Could not leave the meeting:", e)
 
 
-
 class ZoomMeetingRecorder(BaseRecorder):
     def __init__(self, meeting_url, file_output_path):
         super().__init__(meeting_url, file_output_path)
@@ -370,6 +387,45 @@ class ZoomMeetingRecorder(BaseRecorder):
             print("Could not leave the meeting:", e)
 
 
+def start_recording_bot():
+    MEET_URL = "https://meet.google.com/tjq-ehib-gbh"
+    TEAMS_URL = "https://teams.microsoft.com/l/meetup-join/19%3ameeting_YzA4N2Y3ZjQtNzliMS00NzFhLThjYTEtMzExMDUwMTViMzBm%40thread.v2/0?context=%7b%22Tid%22%3a%22ebd44379-62c4-41c8-8741-80fadcf2379e%22%2c%22Oid%22%3a%221692d7ae-7733-42ec-9e9e-4f921497626f%22%7d"
+    ZOOM_URL = "https://us05web.zoom.us/j/81004014333?pwd=bvDn807p2S0wC8fXdPAxoJUjq2pQoj.1"
+    FILE_OUTPUT_PATH = os.path.abspath("meeting.mp4")
+
+    # platform = input("Enter 'meet' for Google Meet or 'teams' for MS Teams or 'zoom' for Zoom: ").strip().lower()
+
+    # if platform == "meet":
+    #     recorder = GoogleMeetRecorder(MEET_URL, FILE_OUTPUT_PATH)
+    # elif platform == "teams":
+    #     recorder = MSTeamsRecorder(TEAMS_URL, FILE_OUTPUT_PATH)
+    # elif platform == "zoom":
+    #     recorder = ZoomMeetingRecorder(ZOOM_URL, FILE_OUTPUT_PATH)
+    # else:
+    #     print("Invalid platform!")
+    #     exit()
+
+    recorder = GoogleMeetRecorder(MEET_URL, FILE_OUTPUT_PATH)
+    recorder.join_meeting()
+    return recorder
+    
+    
+def wait_for_exit(recorder, stop_flag_path="/app/STOP.txt"):
+    print(f"Waiting for {stop_flag_path} to appear to stop recording...")
+    while not os.path.exists(stop_flag_path):
+        time.sleep(1)
+    print("STOP file detected! Stopping...")
+    recorder.leave_meeting()
+    time.sleep(2)
+    recorder.close_resources()
+    print("Resources closed.")
+
+
+
+
+if __name__ == "__main__":
+    recorder = start_recording_bot()
+    wait_for_exit(recorder)
 
 
 

@@ -1,17 +1,28 @@
 import os
 from multiprocessing import Process
 import sys
+import threading
 import time
+import uuid
 from meetbot import GoogleMeetRecorder, MSTeamsRecorder, ZoomMeetingRecorder
 import json
-from transcription import convert_mp4_to_wav, diarize_audio, match_speakers_to_transcript, transcribe_audio, trim_audio
-from video_processing import TeamsProcessor, GoogleMeetProcessor, ZoomProcessor
+# from transcription import convert_mp4_to_wav, diarize_audio, match_speakers_to_transcript, transcribe_audio, trim_audio
+# from video_processing import TeamsProcessor, GoogleMeetProcessor, ZoomProcessor
 import time
 import re
-import torch.multiprocessing as mp
+# import torch.multiprocessing as mp
+import logging
 
 
-# os.environ["CUDA_VISIBLE_DEVICES"] = "6"  
+logging.basicConfig(
+    level=logging.ERROR,
+    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+)
+
+logger = logging.getLogger(__name__)
+active_sessions = {}
+
+
 
 
 def clean_name(name):
@@ -27,6 +38,7 @@ def get_unique_speaker_names(speaker_names):
         if not any(name in other and name != other for other in unique_names):
             full_names.add(cleaned_names[name])
     return list(full_names)
+
 
 def start_recording_bot():
     MEET_URL = "https://meet.google.com/amr-bvrt-htn"
@@ -216,8 +228,13 @@ def initialize():
         print(f"\nProcessing {prefix.capitalize()} meeting...\n")
         process_parallel(original_video_path, trimmed_video_path, output_wav, files_to_delete, file1_path, file2_path, output_path, choice)
 
+def start_virtual_audio_sink():
+    os.system("pulseaudio --start")
+    os.system("pactl load-module module-null-sink sink_name=VirtualSink")
+    os.system("pactl set-default-sink VirtualSink")
+        
 
 if __name__ == "__main__":
-    print("CPU Count : ", os.cpu_count()) 
-    mp.set_start_method("spawn", force=True)
-    initialize()
+    print("CPU Count : ", os.cpu_count())
+    start_virtual_audio_sink()
+    start_recording(meeting_url="https://meet.google.com/oav-upso-hmn", platform="meet")
