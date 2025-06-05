@@ -1,3 +1,5 @@
+import json
+import redis
 import random
 import sys
 import threading
@@ -11,6 +13,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 import signal
 import logging
+from handleZIP import zipIt
+import asyncio
 
 
 logging.basicConfig(
@@ -32,9 +36,57 @@ class BaseRecorder:
         os.system("pactl set-default-sink VirtualSink")
         
     def start_virtual_display(self):
-        os.environ["DISPLAY"] = f":{99}"
-        os.system(f"Xvfb :{99} -screen 0 1920x1080x24 &")
+        display_num = 99
+        os.environ["DISPLAY"] = f":{display_num}"
+    
+        # Clean up any stale lock files
+        lock_file = f"/tmp/.X{display_num}-lock"
+        if os.path.exists(lock_file):
+            print(f"Removing stale Xvfb lock file: {lock_file}")
+            os.remove(lock_file)
         
+        # Start Xvfb
+        print(f"Starting Xvfb on display :{display_num}")
+        os.system(f"Xvfb :{display_num} -screen 0 1920x1080x24 &")
+        
+    # def start_ffmpeg_recording(self):
+    #     try:
+    #         print("Starting FFmpeg recording...")
+    #         print("Output path:", self.file_output_path)
+
+    #         if not self.file_output_path:
+    #             raise ValueError("Output path is not set.")
+    #         os.makedirs(os.path.dirname(self.file_output_path), exist_ok=True)
+    #         self.ffmpeg_process =  subprocess.Popen(
+    #             [
+    #                 "ffmpeg",
+    #                 "-y",
+    #                 "-f", "x11grab",
+    #                 "-r", "30",
+    #                 "-video_size", "1920x1080",
+    #                 "-framerate", "30",
+    #                 # "-draw_mouse", "0",
+    #                 "-i", ":99",
+    #                 "-f", "pulse",
+    #                 "-i", "VirtualSink.monitor",
+    #                 "-ac", "2",
+    #                 "-ar", "48000",
+    #                 "-b:a", "320k",
+    #                 "-codec:a", "libmp3lame",
+    #                 "-af", "highpass=f=200,lowpass=f=3000,loudnorm",
+    #                 "-codec:v", "libx264",
+    #                 "-preset", "ultrafast",
+    #                 "-pix_fmt", "yuv420p",
+    #                 "-fps_mode", "cfr",
+    #                 self.file_output_path
+    #             ],
+    #             stdout=subprocess.PIPE,
+    #             stderr=subprocess.PIPE
+    #         )
+    #     except Exception as e:
+    #         print("Exception occurred while starting FFmpeg:")
+    #         print(str(e))
+
     def start_ffmpeg_recording(self):
         try:
             print("Starting FFmpeg recording...")
@@ -43,7 +95,8 @@ class BaseRecorder:
             if not self.file_output_path:
                 raise ValueError("Output path is not set.")
             os.makedirs(os.path.dirname(self.file_output_path), exist_ok=True)
-            subprocess.Popen(
+
+            self.ffmpeg_process = subprocess.Popen(
                 [
                     "ffmpeg",
                     "-y",
@@ -69,9 +122,28 @@ class BaseRecorder:
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE
             )
+
+            # Function to consume a pipe continuously
+            def consume(pipe):
+                for _ in iter(pipe.readline, b''):
+                    pass
+                pipe.close()
+
+            # Start threads to consume stdout and stderr
+            threading.Thread(target=consume, args=(self.ffmpeg_process.stdout,), daemon=True).start()
+            threading.Thread(target=consume, args=(self.ffmpeg_process.stderr,), daemon=True).start()
+
         except Exception as e:
             print("Exception occurred while starting FFmpeg:")
             print(str(e))
+
+    def stop_ffmpeg_recording(self):
+        if hasattr(self, 'ffmpeg_process') and self.ffmpeg_process:
+            print("Stopping FFmpeg recording...")
+            self.ffmpeg_process.terminate()  # sends SIGTERM to FFmpeg
+            self.ffmpeg_process.wait()
+            print("FFmpeg recording stopped.")
+            self.ffmpeg_process = None
 
     def setup_browser(self):
         options = uc.ChromeOptions()
@@ -97,9 +169,13 @@ class BaseRecorder:
         try:
             if self.ffmpeg_process:
                 print("Stopping recording...")
-                self.ffmpeg_process.send_signal(signal.SIGINT)
-                self.ffmpeg_process.wait()
-                print("Recording stopped and saved:", self.file_output_path)
+                self.ffmpeg_process.terminate()
+                try:
+                    stdout, stderr = self.ffmpeg_process.communicate(timeout=10)
+                    print("FFmpeg stderr:\n", stderr.decode())
+                except subprocess.TimeoutExpired:
+                    self.ffmpeg_process.kill()
+                    print("FFmpeg force-killed after timeout")
 
             if self.driver:
                 self.driver.quit()
@@ -109,6 +185,8 @@ class BaseRecorder:
             os.system("pkill chromedriver")
             os.system("pulseaudio --kill")
             os.system("pkill Xvfb")
+            os.chown(self.file_output_path, 1039, 1042)
+            
             print("All resources cleaned up.")
 
         except Exception as e:
@@ -122,7 +200,7 @@ class GoogleMeetRecorder(BaseRecorder):
     def join_meeting(self):
         self.start_virtual_audio_sink()
         self.start_virtual_display()
-        self.start_ffmpeg_recording()
+        # self.start_ffmpeg_recording()
         self.setup_browser()
         self.driver.get(self.meeting_url)
         time.sleep(5)
@@ -159,13 +237,38 @@ class GoogleMeetRecorder(BaseRecorder):
             )
             ask_to_join_button.click()
             print("Clicked 'Ask to Join' successfully!")
+
+            # print("Attempting to start recording now...")
+            # self.start_ffmpeg_recording()
+            # print("Recording started.")
         except Exception as e:
             print("Could not find 'Ask to Join' button:", e)
+
+        try:
+            joined_wait = WebDriverWait(self.driver, 120)  # wait up to 2 mins
+            joined_wait.until(
+                # Wait for "Leave call" button to confirm full join
+                EC.presence_of_element_located((By.XPATH, "//button[@aria-label='Leave call']"))
+            )
+            print("Successfully joined the meeting.")
+            self.start_ffmpeg_recording()
+            print("Recording started.")
+        except Exception as e:
+            print("Never joined the meeting (maybe host denied or never accepted):", e)
+
 
     def leave_meeting(self):
         wait = WebDriverWait(self.driver, 15)
         try:
-            leave_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[@aria-label='Leave call']")))
+        # Optional: check if already removed from meeting
+            print("Checking if bot is already removed from the meeting...")
+            if "You’ve been removed" in self.driver.page_source or "has ended" in self.driver.page_source:
+                print("Bot was already removed or meeting has ended.")
+                return
+
+            leave_button = wait.until(EC.element_to_be_clickable(
+                (By.XPATH, "//button[@aria-label='Leave call']")
+            ))
             leave_button.click()
             print("Meeting left successfully!")
         except Exception as e:
@@ -387,47 +490,103 @@ class ZoomMeetingRecorder(BaseRecorder):
             print("Could not leave the meeting:", e)
 
 
-def start_recording_bot():
-    MEET_URL = "https://meet.google.com/tjq-ehib-gbh"
-    TEAMS_URL = "https://teams.microsoft.com/l/meetup-join/19%3ameeting_YzA4N2Y3ZjQtNzliMS00NzFhLThjYTEtMzExMDUwMTViMzBm%40thread.v2/0?context=%7b%22Tid%22%3a%22ebd44379-62c4-41c8-8741-80fadcf2379e%22%2c%22Oid%22%3a%221692d7ae-7733-42ec-9e9e-4f921497626f%22%7d"
-    ZOOM_URL = "https://us05web.zoom.us/j/81004014333?pwd=bvDn807p2S0wC8fXdPAxoJUjq2pQoj.1"
-    FILE_OUTPUT_PATH = os.path.abspath("meeting.mp4")
+async def start_recording_bot(choice: str, meeting_url: str):
+    # MEET_URL = "https://meet.google.com/myx-rsbb-nce"
+    # TEAMS_URL = "https://teams.microsoft.com/l/meetup-join/19%3ameeting_YzA4N2Y3ZjQtNzliMS00NzFhLThjYTEtMzExMDUwMTViMzBm%40thread.v2/0?context=%7b%22Tid%22%3a%22ebd44379-62c4-41c8-8741-80fadcf2379e%22%2c%22Oid%22%3a%221692d7ae-7733-42ec-9e9e-4f921497626f%22%7d"
+    # ZOOM_URL = "https://us05web.zoom.us/j/81004014333?pwd=bvDn807p2S0wC8fXdPAxoJUjq2pQoj.1"
+    FILE_OUTPUT_PATH = os.path.abspath("/shared/meeting.mp4")
 
     # platform = input("Enter 'meet' for Google Meet or 'teams' for MS Teams or 'zoom' for Zoom: ").strip().lower()
 
-    # if platform == "meet":
-    #     recorder = GoogleMeetRecorder(MEET_URL, FILE_OUTPUT_PATH)
-    # elif platform == "teams":
-    #     recorder = MSTeamsRecorder(TEAMS_URL, FILE_OUTPUT_PATH)
-    # elif platform == "zoom":
-    #     recorder = ZoomMeetingRecorder(ZOOM_URL, FILE_OUTPUT_PATH)
-    # else:
-    #     print("Invalid platform!")
-    #     exit()
+    if choice == "gmeet":
+        recorder = GoogleMeetRecorder(meeting_url, FILE_OUTPUT_PATH)
+    elif choice == "teams":
+        recorder = MSTeamsRecorder(meeting_url, FILE_OUTPUT_PATH)
+    elif choice == "zoom":
+        recorder = ZoomMeetingRecorder(meeting_url, FILE_OUTPUT_PATH)
+    else:
+        print("Invalid platform!")
+        exit()
 
-    recorder = GoogleMeetRecorder(MEET_URL, FILE_OUTPUT_PATH)
-    recorder.join_meeting()
+    # recorder = GoogleMeetRecorder(MEET_URL, FILE_OUTPUT_PATH)
+    # recorder.join_meeting()
+
+    # return recorder
+    await asyncio.to_thread(recorder.join_meeting)
+    # await recorder.join_meeting()
+
     return recorder
     
     
-def wait_for_exit(recorder, stop_flag_path="/app/STOP.txt"):
+async def wait_for_exit(recorder, choice, stop_flag_path="/app/STOP.txt"):
     print(f"Waiting for {stop_flag_path} to appear to stop recording...")
     while not os.path.exists(stop_flag_path):
-        time.sleep(1)
+        await asyncio.sleep(1)
     print("STOP file detected! Stopping...")
-    recorder.leave_meeting()
-    time.sleep(2)
-    recorder.close_resources()
+    await asyncio.to_thread(recorder.leave_meeting)
+    await asyncio.sleep(2)
+    await asyncio.to_thread(recorder.close_resources)
     print("Resources closed.")
+    # subprocess.run([
+    #     "docker", "exec", "worker", "python3", "main.py",
+    #     "--mode", "normal"
+    # ])
+    # choice, original_video_path, file1_path, file2_path ,output_json_path, output_wav
+    input_data = {
+        "choice": "meet",
+        "original_video_path": recorder.file_output_path,
+        "trimmed_video_path" : f"/shared/{choice}_trimmed_recording.mp4",
+        "file1_path": f"/shared/{choice}_transcript_log.json",
+        "file2_path": f"/shared/{choice}_speaker_log.json",
+        "output_json_path": f"/shared/{choice}_merged_transcript.json",
+        "output_wav": "/shared/meeting.wav",
+    }
+#   /shared/input-{uuid.uuid4().hex}
+    filename = f"/shared/input-transcription.json"
+    with open(filename, "w") as f:
+        json.dump(input_data, f)
 
+    print(f"Input file created: {filename}")
+    print(f"Recording saved at: {recorder.file_output_path}")
+    
+    await asyncio.to_thread(recorder.stop_ffmpeg_recording)
+    print("FFmpeg recording stopped after async tasks completed.")
 
+def watch_loop():
+    INPUT_DIR = "/shared"
+    print("Watching for input file...")
+    while True:
+        for file in os.listdir(INPUT_DIR):
+            if file.startswith("input-bot") and file.endswith(".json"):
+                file_path = os.path.join(INPUT_DIR, file)
+                try:
+                    with open(file_path, "r") as f:
+                        data = json.load(f)
+                    if "choice" in data and "meeting_url" in data:
+                        recorder = start_recording_bot(data["choice"], data["meeting_url"])
+                        time.sleep(30)
+                        print(f"Starting recording for {data['choice']} meeting at {data['meeting_url']}")
+                        wait_for_exit(recorder, data["choice"])
+
+                    print(f"Processed: {file}")
+                except Exception as e:
+                    print(f"Error processing {file}: {e}")
+                try:
+                    os.remove(file_path)
+                    print(f"Deleted: {file}")
+                except Exception as e:
+                    print(f"Failed to delete {file}: {e}")
+
+        time.sleep(2)
 
 
 if __name__ == "__main__":
-    recorder = start_recording_bot()
-    wait_for_exit(recorder)
+    watch_loop()
+    
+    # recorder = start_recording_bot()
+    # wait_for_exit(recorder)
 
-
+# {"choice": "gmeet", "meeting_url" : "https://meet.google.com/jjc-evpv-stq"}
 
 
 

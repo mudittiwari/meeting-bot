@@ -7,12 +7,22 @@ import subprocess
 import os
 import json
 from dotenv import load_dotenv
+import logging
+
+
+logging.basicConfig(
+    level=logging.ERROR,
+    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+)
+
+logger = logging.getLogger(__name__)
 
 
 
 load_dotenv()
 
-def trim_audio(input_file, output_file, duration=60, delete_files=None):
+def trim_audio(input_file, output_file, duration=5, delete_files=None):
+    print("deleting files")
     if delete_files:
         for file in delete_files:
             if os.path.exists(file):
@@ -58,7 +68,7 @@ def convert_mp4_to_wav(input_path, output_path):
         "-acodec", "pcm_s16le",
         output_path
     ]
-    subprocess.run(command, check=True)
+    subprocess.run(command, check=True, stdout=subprocess.DEVNULL)
     return output_path
 
 def process_segment(turn, speaker):
@@ -97,7 +107,7 @@ def diarize_audio(audio_file):
     return speaker_segments
 
 def transcribe_audio(audio_file):
-    model = whisper.load_model("base").to("cuda:6")
+    model = whisper.load_model("base").to("cuda:0")
     result = model.transcribe(audio_file)
     return result["text"], result["segments"]
 

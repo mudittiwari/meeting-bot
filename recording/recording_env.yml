@@ -10,7 +10,9 @@ dependencies:
   - python=3.12
   - selenium
   - pip:
+      - redis
       - speechbrain
       - undetected-chromedriver==3.5.5
       - sounddevice
       - soundfile
+      - python-dotenv

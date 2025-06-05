@@ -1,3 +1,4 @@
+import argparse
 import os
 from multiprocessing import Process
 import sys
@@ -5,15 +6,14 @@ import threading
 import time
 import uuid
 import json
+
+import torch
 from transcription import convert_mp4_to_wav, diarize_audio, match_speakers_to_transcript, transcribe_audio, trim_audio
 from video_processing import TeamsProcessor, GoogleMeetProcessor, ZoomProcessor
 import time
 import re
-# import torch.multiprocessing as mp
+import torch.multiprocessing as mp
 import logging
-
-from transcription.transcription import convert_mp4_to_wav, diarize_audio, match_speakers_to_transcript, transcribe_audio, trim_audio
-from transcription.video_processing import GoogleMeetProcessor, TeamsProcessor, ZoomProcessor
 
 
 logging.basicConfig(
@@ -149,31 +149,73 @@ def get_whisper_transcript(video_path,trimmed_video_path, output_audio_path, fil
 
 def get_video_ocr_results(video_path, choice, file2_path):
     print("running ocr")
-    if choice == "1":
+    print(choice)
+    if choice == "meet":
         processor = GoogleMeetProcessor(video_path, file2_path) 
         processor.process_video()
-    elif choice == "2":
+    elif choice == "teams":
         processor = TeamsProcessor(video_path, file2_path) 
         processor.process_video()
-    elif choice == "3":
+    elif choice == "zoom":
         processor = ZoomProcessor(video_path, file2_path) 
         processor.process_video()
         
     # time.sleep(8)
 
-def initialize():
-    prefix = "gmeet"
-    file1_path = f"{prefix}_transcript_log.json"
-    file2_path = f"{prefix}_speaker_log.json"
-    output_path = f"{prefix}_merged_transcript.json"
-    original_video_path = f"/mnt/nvme_disk2/User_data/nb57077k/meetbot_project/{prefix}_output.mp4"
-    trimmed_video_path = f"/mnt/nvme_disk2/User_data/nb57077k/meetbot_project/{prefix}_trimmed_recording.mp4"
-    output_wav = f"/mnt/nvme_disk2/User_data/nb57077k/meetbot_project/{prefix}_trimmed_recording.wav"
+def initialize(choice, original_video_path, trimmed_video_path, file1_path, file2_path ,output_json_path, output_wav):
+    # prefix = "gmeet"
+    # file1_path = f"/shared/{choice}_transcript_log.json"
+    # file2_path = f"/shared/{choice}_speaker_log.json"
+    # output_path = f"/shared/{choice}_merged_transcript.json"
+    # original_video_path = f"/mnt/nvme_disk2/User_data/nb57077k/meetbot_project/{choice}_output.mp4"
+    # trimmed_video_path = f"/mnt/nvme_disk2/User_data/nb57077k/meetbot_project/{choice}_trimmed_recording.mp4"
+    # output_wav = f"/mnt/nvme_disk2/User_data/nb57077k/meetbot_project/{choice}_trimmed_recording.wav"
     files_to_delete = [output_wav, trimmed_video_path]
-    print(f"\nProcessing {prefix.capitalize()} meeting...\n")
-    process_parallel(original_video_path, trimmed_video_path, output_wav, files_to_delete, file1_path, file2_path, output_path, 1)
+    print(f"\nProcessing {choice.capitalize()} meeting...\n")
+    process_parallel(original_video_path, trimmed_video_path, output_wav, files_to_delete, file1_path, file2_path, output_json_path, choice)
         
+def watch_loop():
+    INPUT_DIR = "/shared"
+    print("Watching for input file...")
+    while True:
+        for file in os.listdir(INPUT_DIR):
+            if file.startswith("input-transcription") and file.endswith(".json"):
+                file_path = os.path.join(INPUT_DIR, file)
+
+                try:
+                    with open(file_path, "r") as f:
+                        data = json.load(f)
+
+                    required_keys = ["choice", "original_video_path", "trimmed_video_path" ,"file1_path", "file2_path", "output_json_path", "output_wav"]
+                    if all(key in data for key in required_keys):
+                        initialize(
+                            data["choice"],
+                            data["original_video_path"],
+                            data["trimmed_video_path"],
+                            data["file1_path"],
+                            data["file2_path"],
+                            data["output_json_path"],
+                            data["output_wav"]
+                        )
+                        print(f"Processed: {file}")
+                    else:
+                        print(f"Missing required keys in: {file}")
+
+                except Exception as e:
+                    print(f"Error processing {file}: {e}")
+                try:
+                    os.remove(file_path)
+                    print(f"Deleted: {file}")
+                except Exception as e:
+                    print(f"Failed to delete {file}: {e}")
+        time.sleep(2)        
 
 if __name__ == "__main__":
     print("CPU Count : ", os.cpu_count())
-    initialize()
+    os.environ["CUDA_VISIBLE_DEVICES"] = "6"
+    mp.set_start_method("spawn", force=True)
+    print(torch.cuda.device_count())
+    print(torch.cuda.is_available())
+    watch_loop()
+    # time.sleep(1000)
+    # initialize()

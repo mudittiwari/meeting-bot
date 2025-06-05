@@ -14,11 +14,58 @@
 # ENV PATH /opt/conda/envs/recording_env/bin:$PATH
 
 
+# FROM continuumio/miniconda3
+
+# # Set working directory
+# WORKDIR /app
+
+# RUN apt-get update && apt-get install -y \
+#     wget \
+#     curl \
+#     unzip \
+#     fonts-liberation \
+#     libgbm1 \
+#     libvulkan1 \
+#     xdg-utils \
+#     libasound2 \
+#     libatk-bridge2.0-0 \
+#     libgtk-3-0 \
+#     pulseaudio \
+#     xvfb \
+#     x11-utils \
+#     libx11-6 \
+#     libxtst6 \
+#     libnss3 \
+#     libxrandr2 \
+#     libxss1 \
+#     && rm -rf /var/lib/apt/lists/*
+
+# RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
+#     && apt-get update \
+#     && apt-get install -y ./google-chrome-stable_current_amd64.deb \
+#     && rm google-chrome-stable_current_amd64.deb
+
+# RUN apt-get update && apt-get install -y ffmpeg
+
+# COPY recording_env.yml .
+
+# RUN conda env create -f recording_env.yml
+
+# ENV PATH /opt/conda/envs/meetng_bot_recording/bin:$PATH
+
+# SHELL ["conda", "run", "-n", "meetng_bot_recording", "/bin/bash", "-c"]
+
+# COPY . .
+
+# CMD ["conda", "run", "-n", "meetng_bot_recording", "python", "consumer.py"]
+
+
+
 FROM continuumio/miniconda3
 
-# Set working directory
 WORKDIR /app
 
+# Install dependencies for audio and chrome
 RUN apt-get update && apt-get install -y \
     wget \
     curl \
@@ -40,20 +87,21 @@ RUN apt-get update && apt-get install -y \
     libxss1 \
     && rm -rf /var/lib/apt/lists/*
 
+# Install Google Chrome
 RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
-    && apt-get update \
     && apt-get install -y ./google-chrome-stable_current_amd64.deb \
     && rm google-chrome-stable_current_amd64.deb
 
+# Install FFmpeg
 RUN apt-get update && apt-get install -y ffmpeg
 
+# Copy and create Conda environment
 COPY recording_env.yml .
-
 RUN conda env create -f recording_env.yml
 
-ENV PATH /opt/conda/envs/meetng_bot_recording/bin:$PATH
-
-SHELL ["conda", "run", "-n", "meetng_bot_recording", "/bin/bash", "-c"]
-
+# Copy application code
 COPY . .
+
+# Run the script inside the conda environment
+CMD ["conda", "run", "--no-capture-output", "-n", "meetng_bot_recording", "python", "consumer.py"]
 

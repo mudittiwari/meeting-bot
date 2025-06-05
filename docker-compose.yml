@@ -1,0 +1,49 @@
+services:
+  redis:
+    image: redis:latest
+    ports:
+      - "6380:6379"
+
+  server:
+    build:
+      context: ./fastServer
+    container_name: fastServer
+    ports:
+      - "7000:7000"
+    depends_on:
+      - redis
+    
+      
+  recorder:
+    build:
+      context: ./recording
+      dockerfile: Dockerfile.recording
+    depends_on:
+      - redis
+    volumes:
+      - ./recording:/app
+      - ./shared:/shared
+      - /var/run/docker.sock:/var/run/docker.sock
+    # user: "1039:1042"
+    environment:
+      - PYTHONUNBUFFERED=1
+    env_file:
+      - ./recording/.env
+    tty: true
+  
+  # transcription:
+  #   build:
+  #     context: ./transcription
+  #     dockerfile: Dockerfile.transcription
+  #   container_name: transcription_bot
+  #   command: >
+  #     python3 main.py
+  #   volumes:
+  #     - ./transcription:/app
+  #     - ./shared:/shared
+  #   environment:
+  #     - NVIDIA_VISIBLE_DEVICES=all
+  #     - PYTHONUNBUFFERED=1
+  #     - hugging_face_token=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
+  #   runtime: nvidia
+  #   tty: true

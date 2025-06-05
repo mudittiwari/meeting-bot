@@ -7,8 +7,10 @@ COPY environment.yml .
 #     && rm -rf /var/lib/apt/lists/*
 
 RUN conda env create -f environment.yml
-RUN conda install -n transcription -c conda-forge ffmpeg
 SHELL ["conda", "run", "-n", "transcription", "/bin/bash", "-c"]
+
+
+RUN conda install -n transcription -c conda-forge ffmpeg
 
 ENV PATH /opt/conda/envs/transcription/bin:$PATH
 
