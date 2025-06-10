@@ -1,16 +1,23 @@
 [
     {
-        "timestamp": "0.00s",
+        "timestamp": "0.80s",
         "speaker": [
             "Unknown"
         ],
-        "text": " to"
+        "text": " \u0623\u0634\u00f6m\u0648 \u062d\u0628"
     },
     {
-        "timestamp": "16.76s",
+        "timestamp": "21.02s",
+        "speaker": [
+            "SPEAKER_01"
+        ],
+        "text": " Hm Hello"
+    },
+    {
+        "timestamp": "23.68s",
         "speaker": [
             "Unknown"
         ],
-        "text": " Hello."
+        "text": " hello"
     }
 ]

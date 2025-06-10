@@ -38,16 +38,45 @@ class BaseRecorder:
     def start_virtual_display(self):
         display_num = 99
         os.environ["DISPLAY"] = f":{display_num}"
-    
-        # Clean up any stale lock files
         lock_file = f"/tmp/.X{display_num}-lock"
+
+        # Kill any running Xvfb on :99
+        print("Checking if Xvfb is running on :99...")
+        try:
+            # Find and kill any Xvfb process using :99
+            output = subprocess.getoutput(f"ps aux | grep 'Xvfb :{display_num}' | grep -v grep")
+            if output:
+                print("Existing Xvfb process found. Killing it...")
+                pid = output.split()[1]
+                os.system(f"kill -9 {pid}")
+                time.sleep(1)
+            else:
+                print("No existing Xvfb process found.")
+        except Exception as e:
+            print("Error while checking/killing existing Xvfb:", str(e))
+
+        # Remove lock file if it still exists
         if os.path.exists(lock_file):
             print(f"Removing stale Xvfb lock file: {lock_file}")
             os.remove(lock_file)
-        
+
         # Start Xvfb
         print(f"Starting Xvfb on display :{display_num}")
         os.system(f"Xvfb :{display_num} -screen 0 1920x1080x24 &")
+
+    # def start_virtual_display(self):
+    #     display_num = 99
+    #     os.environ["DISPLAY"] = f":{display_num}"
+    
+    #     # Clean up any stale lock files
+    #     lock_file = f"/tmp/.X{display_num}-lock"
+    #     if os.path.exists(lock_file):
+    #         print(f"Removing stale Xvfb lock file: {lock_file}")
+    #         os.remove(lock_file)
+        
+    #     # Start Xvfb
+    #     print(f"Starting Xvfb on display :{display_num}")
+    #     os.system(f"Xvfb :{display_num} -screen 0 1920x1080x24 &")
         
     # def start_ffmpeg_recording(self):
     #     try:
@@ -164,18 +193,52 @@ class BaseRecorder:
         )
         self.driver = uc.Chrome(options=options)
 
+    # def close_resources(self):
+    #     """Stop FFmpeg recording and clean up resources properly"""
+    #     try:
+    #         if self.ffmpeg_process:
+    #             print("Stopping recording...")
+    #             self.ffmpeg_process.terminate()
+    #             try:
+    #                 stdout, stderr = self.ffmpeg_process.communicate(timeout=10)
+    #                 print("FFmpeg stderr:\n", stderr.decode())
+    #             except subprocess.TimeoutExpired:
+    #                 self.ffmpeg_process.kill()
+    #                 print("FFmpeg force-killed after timeout")
+
+    #         if self.driver:
+    #             self.driver.quit()
+    #             print("WebDriver closed.")
+
+    #         os.system("pkill chrome")
+    #         os.system("pkill chromedriver")
+    #         os.system("pulseaudio --kill")
+    #         os.system("pkill Xvfb")
+    #         if os.path.exists(self.file_output_path):
+    #             os.chown(self.file_output_path, 1039, 1042)
+    #         else:
+    #             print(f"Output file does not exist: {self.file_output_path}")
+            
+    #         print("All resources cleaned up.")
+
+    #     except Exception as e:
+    #         print("Error closing resources:", e)
+
     def close_resources(self):
-        """Stop FFmpeg recording and clean up resources properly"""
         try:
             if self.ffmpeg_process:
                 print("Stopping recording...")
                 self.ffmpeg_process.terminate()
-                try:
-                    stdout, stderr = self.ffmpeg_process.communicate(timeout=10)
-                    print("FFmpeg stderr:\n", stderr.decode())
-                except subprocess.TimeoutExpired:
-                    self.ffmpeg_process.kill()
-                    print("FFmpeg force-killed after timeout")
+
+                if self.ffmpeg_process.poll() is None:
+                    try:
+                        stdout, stderr = self.ffmpeg_process.communicate(timeout=10)
+                        print("FFmpeg stderr:\n", stderr.decode())
+                    except subprocess.TimeoutExpired:
+                        self.ffmpeg_process.kill()
+                        print("FFmpeg force-killed after timeout")
+                else:
+                    print("FFmpeg process already exited.")
 
             if self.driver:
                 self.driver.quit()
@@ -185,8 +248,12 @@ class BaseRecorder:
             os.system("pkill chromedriver")
             os.system("pulseaudio --kill")
             os.system("pkill Xvfb")
-            os.chown(self.file_output_path, 1039, 1042)
-            
+
+            if os.path.exists(self.file_output_path):
+                os.chown(self.file_output_path, 1039, 1042)
+            else:
+                print(f"Output file does not exist: {self.file_output_path}")
+
             print("All resources cleaned up.")
 
         except Exception as e:
@@ -373,7 +440,7 @@ class MSTeamsRecorder(BaseRecorder):
     def leave_meeting(self):
         wait = WebDriverWait(self.driver, 15)
         try:
-            leave_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[@aria-label='Leave (Ctrl+Shift+H)']")))
+            leave_button = wait.until(EC.element_to_be_clickable((By.ID, "hangup-button")))
             leave_button.click()
             time.sleep(10)
         except Exception as e:
@@ -533,7 +600,7 @@ async def wait_for_exit(recorder, choice, stop_flag_path="/app/STOP.txt"):
     # ])
     # choice, original_video_path, file1_path, file2_path ,output_json_path, output_wav
     input_data = {
-        "choice": "meet",
+        "choice": choice,
         "original_video_path": recorder.file_output_path,
         "trimmed_video_path" : f"/shared/{choice}_trimmed_recording.mp4",
         "file1_path": f"/shared/{choice}_transcript_log.json",
