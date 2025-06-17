@@ -1,3 +1,10 @@
 fastapi
 uvicorn
 redis
+motor
+pymongo
+passlib[bcrypt]
+pydantic
+python-jose
+email-validator
+python-multipart

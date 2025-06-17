@@ -22,6 +22,7 @@ GOFILE_TOKEN = os.getenv("GOFILE_TOKEN")
 
 r = redis.Redis(host='redis', port=6379, db=0)
 queue_name = "recording_queue"
+queue_name_fastAPI = "fastAPI-queue"
 
 def create_zip(input_file="/shared/meeting.mp4", output_dir="/shared/zips"):
     print("Creating zip file from recording directory...")
@@ -125,7 +126,7 @@ Meeting Bot
 #     except Exception as e:
 #         print(f"Error processing job: {e}")
 
-async def process_job(choice, url, email):
+async def process_job(choice, url, email, meeting_id):
     print(f"[ASYNC] Starting recording: {choice}, {url}")
     recorder = await start_recording_bot(choice, url)
 
@@ -139,8 +140,17 @@ async def process_job(choice, url, email):
     # zip_path = await asyncio.to_thread(create_zip)
     print(f"[ASYNC] Zip created: {zip_path}")
 
-    upload_to_gofile(zip_path, GOFILE_TOKEN, email)
+    download_link = upload_to_gofile(zip_path, GOFILE_TOKEN, email)
     # await asyncio.to_thread(upload_to_gofile, zip_path, GOFILE_TOKEN, email)
+
+    # await update_meeting_status(meeting_id, MeetingStatus.successfully_done)
+    # await update_meeting_zip_file(meeting_id, zip_path )
+    payload = {
+            "status": "successfully_done",
+            "meeting_id": meeting_id,
+            "zip_file_link": download_link
+        }
+    r.rpush(queue_name_fastAPI, json.dumps(payload))
 
 
 async def main():
@@ -155,13 +165,14 @@ async def main():
             choice = data.get('choice')
             url = data.get('meeting_url')
             email = data.get('email')
+            meeting_id = data.get('meeting_id')
 
-            if not all([choice, url, email]):
+            if not all([choice, url, email, meeting_id]):
                 print("Missing required fields in job")
                 continue
 
             # asyncio.create_task(process_job(choice, url, email))  # fire and forget
-            await process_job(choice, url, email)
+            await process_job(choice, url, email, meeting_id)
 
         except Exception as e:
             print(f"Error processing job: {e}")

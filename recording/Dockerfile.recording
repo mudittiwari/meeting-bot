@@ -100,8 +100,7 @@ COPY recording_env.yml .
 RUN conda env create -f recording_env.yml
 
 # Copy application code
-COPY . .
-
+COPY . /app
 # Run the script inside the conda environment
 CMD ["conda", "run", "--no-capture-output", "-n", "meetng_bot_recording", "python", "consumer.py"]
 
