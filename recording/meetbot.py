@@ -15,6 +15,7 @@ import signal
 import logging
 from handleZIP import zipIt
 import asyncio
+import shutil
 
 
 logging.basicConfig(
@@ -324,6 +325,45 @@ class GoogleMeetRecorder(BaseRecorder):
             print("Never joined the meeting (maybe host denied or never accepted):", e)
 
 
+        try:
+            got_it_button = WebDriverWait(self.driver, 1).until(
+                EC.element_to_be_clickable((By.XPATH, '//span[text()="Got it"]/ancestor::button'))
+            )
+            got_it_button.click()
+            print("Closed the overlay dialog.")
+        except:
+            print("No overlay or 'Got it' button found.")
+        
+        try:
+            # Find the "People" icon
+            people_icon = WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located((By.XPATH, '//i[contains(text(), "people")]'))
+            )
+
+            # Get the button containing the icon
+            people_button = people_icon.find_element(By.XPATH, './ancestor::button[1]')
+
+            # Wait until it's clickable
+            WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(people_button))
+
+            # Scroll into view and click using JS
+            self.driver.execute_script("arguments[0].scrollIntoView(true);", people_button)
+            self.driver.execute_script("arguments[0].click();", people_button)
+
+        except Exception as e:
+            print("Exception while clicking People button:", e)
+
+    def close_got_it_popup(self):
+        try:
+            got_it_button = WebDriverWait(self.driver, 1).until(
+                EC.element_to_be_clickable((By.XPATH, '//span[text()="Got it"]/ancestor::button'))
+            )
+            got_it_button.click()
+            print("Closed the overlay dialog.")
+        except:
+            print("No overlay or 'Got it' button found.")
+
+
     def leave_meeting(self):
         wait = WebDriverWait(self.driver, 15)
         try:
@@ -341,6 +381,46 @@ class GoogleMeetRecorder(BaseRecorder):
         except Exception as e:
             print("Could not leave the meeting:", e)
 
+    def get_participants(self):
+        try:
+            # Locate the specific participant list using both role and aria-label
+            participant_list = WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located((
+                    By.XPATH,
+                    '//div[@role="list" and @aria-label="Participants"]'
+                ))
+            )
+
+            # print(participant_list)
+            # Now find all children with role="listitem"
+            list_items = participant_list.find_elements(By.XPATH, './/div[@role="listitem"]')
+
+            # Extract and clean participant names
+            matching = []
+            for p in list_items:
+                name = p.get_attribute("aria-label")
+                if not name:
+                    continue
+
+                # Try to find the tooltip div inside the participant block
+                try:
+                    tooltip = p.find_element(By.XPATH, './/div[@role="tooltip"]')
+                    # print(tooltip.get_attribute("outerHTML"))
+                    tooltip_text = tooltip.get_attribute("textContent").strip().lower()
+                    # print(tooltip_text)
+                    if "mute" in tooltip_text and "unmute" not in tooltip_text:
+                        # print(tooltip_text)
+                        matching.append(name.replace("(You)", "").strip())
+                except:
+                    # Tooltip may not be present; skip silently
+                    continue
+
+            # print(matching)
+            return  matching
+            
+
+        except Exception as e:
+            print("Error retrieving participants:", e)
 
 class MSTeamsRecorder(BaseRecorder):
     def __init__(self, meeting_url, file_output_path):
@@ -583,11 +663,74 @@ async def start_recording_bot(choice: str, meeting_url: str):
     # await recorder.join_meeting()
 
     return recorder
+
+def append_speaker_data(file_path, timestamp, speaker_list):
+    # Initialize data
+    new_entry = {
+        "timestamp": f"{timestamp}s",
+        "speaker": speaker_list
+    }
+
+    # If the file exists, load existing array
+    if os.path.exists(file_path):
+        with open(file_path, "r") as f:
+            try:
+                data = json.load(f)
+            except json.JSONDecodeError:
+                data = []
+    else:
+        data = []
+
+    # Append the new entry
+    data.append(new_entry)
+
+    # Save back to file
+    with open(file_path, "w") as f:
+        json.dump(data, f, indent=4)
     
     
 async def wait_for_exit(recorder, choice, stop_flag_path="/app/STOP.txt"):
+    INPUT_DIR = "/shared"
+
+    #####################################code to delete zip file folder##################################
+
+    # zip_folder_path = os.path.join(INPUT_DIR, "zips")
+    # logger.info(zip_folder_path)
+    # if os.path.isdir(zip_folder_path):
+    #     try:
+    #         shutil.rmtree(zip_folder_path)
+    #         print(f"Deleted folder: {zip_folder_path}")
+    #     except Exception as e:
+    #         print(f"Failed to delete folder {zip_folder_path}: {e}")
+
+    #####################################code to delete zip file folder##################################
+
+
+    logger.info("Watching for input file...")
     print(f"Waiting for {stop_flag_path} to appear to stop recording...")
+    timestamp = 0
+
+
+
+    #####################################code to clear speaker log json##################################
+
+
+    if os.path.exists(f"/shared/{choice}_merged_transcript.json"):
+        os.remove(f"/shared/{choice}_merged_transcript.json")
+
+    with open(f"/shared/{choice}_speaker_log.json", "w") as f:
+        json.dump([], f, indent=4)
+
+    #####################################code to clear speaker log json##################################
+
+
+
+
     while not os.path.exists(stop_flag_path):
+        participants = recorder.get_participants()
+        recorder.close_got_it_popup()
+        append_speaker_data(f"/shared/{choice}_speaker_log.json", timestamp, participants)
+        timestamp = timestamp + 1
         await asyncio.sleep(1)
     print("STOP file detected! Stopping...")
     await asyncio.to_thread(recorder.leave_meeting)
@@ -621,7 +764,7 @@ async def wait_for_exit(recorder, choice, stop_flag_path="/app/STOP.txt"):
 
 def watch_loop():
     INPUT_DIR = "/shared"
-    print("Watching for input file...")
+    logger.info("Watching for input file...")
     while True:
         for file in os.listdir(INPUT_DIR):
             if file.startswith("input-bot") and file.endswith(".json"):

@@ -24,7 +24,7 @@ r = redis.Redis(host='redis', port=6379, db=0)
 queue_name = "recording_queue"
 queue_name_fastAPI = "fastAPI-queue"
 
-def create_zip(input_file="/shared/meeting.mp4", output_dir="/shared/zips"):
+def create_zip(transcript_file, input_file="/shared/meeting.mp4", output_dir="/shared/zips"):
     print("Creating zip file from recording directory...")
     print(f"Recording directory: {input_file}")
 
@@ -38,6 +38,7 @@ def create_zip(input_file="/shared/meeting.mp4", output_dir="/shared/zips"):
 
     with zipfile.ZipFile(output_zip_path, 'w') as zipf:
         zipf.write(input_file, arcname="meeting.mp4")
+        zipf.write(transcript_file, arcname="transcript.json")
     return output_zip_path
 
 def upload_to_gofile(zip_path, token, email, folder_id=None):
@@ -136,7 +137,13 @@ async def process_job(choice, url, email, meeting_id):
     # await asyncio.to_thread(wait_for_exit, recorder, choice)
     print("[ASYNC] Recording finished")
 
-    zip_path = create_zip()
+    while not os.path.exists(f"/shared/{choice}_merged_transcript.json"):
+        # participants = recorder.get_participants()
+        # append_speaker_data(f"/shared/{choice}_speaker_log.json", timestamp, participants)
+        # timestamp = timestamp + 1
+        await asyncio.sleep(1)
+
+    zip_path = create_zip(transcript_file=f"/shared/{choice}_merged_transcript.json")
     # zip_path = await asyncio.to_thread(create_zip)
     print(f"[ASYNC] Zip created: {zip_path}")
 
@@ -151,7 +158,6 @@ async def process_job(choice, url, email, meeting_id):
             "zip_file_link": download_link
         }
     r.rpush(queue_name_fastAPI, json.dumps(payload))
-
 
 async def main():
     print("Consumer started. Waiting for jobs...")

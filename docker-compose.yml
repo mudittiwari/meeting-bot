@@ -32,19 +32,19 @@ services:
       - ./recording/.env
     tty: true
   
-  # transcription:
-  #   build:
-  #     context: ./transcription
-  #     dockerfile: Dockerfile.transcription
-  #   container_name: transcription_bot
-  #   command: >
-  #     python3 main.py
-  #   volumes:
-  #     - ./transcription:/app
-  #     - ./shared:/shared
-  #   environment:
-  #     - NVIDIA_VISIBLE_DEVICES=all
-  #     - PYTHONUNBUFFERED=1
-  #     - hugging_face_token=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
-  #   runtime: nvidia
-  #   tty: true
+  transcription:
+    build:
+      context: ./transcription
+      dockerfile: Dockerfile.transcription
+    container_name: transcription_bot
+    command: >
+      python3 main.py
+    volumes:
+      - ./transcription:/app
+      - ./shared:/shared
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - PYTHONUNBUFFERED=1
+      - hugging_face_token=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
+    runtime: nvidia
+    tty: true

@@ -1,1 +1,0 @@
-{"choice": "gmeet", "original_video_path": "/shared/meeting.mp4", "trimmed_video_path": "/shared/gmeet_trimmed_recording.mp4", "file1_path": "/shared/gmeet_transcript_log.json", "file2_path": "/shared/gmeet_speaker_log.json", "output_json_path": "/shared/gmeet_merged_transcript.json", "output_wav": "/shared/meeting.wav"}

@@ -123,13 +123,13 @@ def create_merge_transcript_file(file1_path, file2_path, output_path):
 def process_parallel(video_path, trimmed_video_path, output_audio_path, files_to_delete, file1_path, file2_path, output_path, choice):
     start_time = time.time() 
     process1 = Process(target=get_whisper_transcript, args=(video_path, trimmed_video_path, output_audio_path, file1_path, files_to_delete))
-    process2 = Process(target=get_video_ocr_results, args=(video_path,choice,file2_path))
+    # process2 = Process(target=get_video_ocr_results, args=(video_path,choice,file2_path))
 
     process1.start()
-    process2.start()
+    # process2.start()
 
     process1.join()
-    process2.join()
+    # process2.join()
 
     print("Merging files...")
     create_merge_transcript_file(file1_path, file2_path, output_path)
