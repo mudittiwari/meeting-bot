@@ -95,6 +95,10 @@ RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.d
 # Install FFmpeg
 RUN apt-get update && apt-get install -y ffmpeg
 
+RUN apt update && \
+    apt install -y xdotool x11-utils libx11-dev libxtst6 libxext6 && \
+    apt clean && rm -rf /var/lib/apt/lists/*
+
 # Copy and create Conda environment
 COPY recording_env.yml .
 RUN conda env create -f recording_env.yml

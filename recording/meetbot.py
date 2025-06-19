@@ -187,8 +187,10 @@ class BaseRecorder:
         options.add_argument("--disable-popup-blocking")
         options.add_argument("--disable-notifications")
         options.add_argument("--no-sandbox")
-        options.add_argument("--disable-dev-shm-usage")
         options.add_argument("--disable-default-apps")
+        options.add_argument('--ignore-certificate-errors')
+        options.add_argument('--allow-running-insecure-content')
+        options.add_argument('--disable-dev-shm-usage')
         options.add_argument(
             "--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.6998.35 Safari/537.36"
         )
@@ -425,6 +427,7 @@ class GoogleMeetRecorder(BaseRecorder):
 class MSTeamsRecorder(BaseRecorder):
     def __init__(self, meeting_url, file_output_path):
         super().__init__(meeting_url, file_output_path)
+
     def close_external_protocol_popup(self):
         time.sleep(2)  # Wait for the pop-up to appear
         os.system("xdotool key Return")
@@ -462,7 +465,6 @@ class MSTeamsRecorder(BaseRecorder):
                 print("Camera is already off")
         except Exception as e:
             print("Could not find the camera toggle button:", e)
-
 
     def join_meeting(self):
         self.start_virtual_audio_sink()
@@ -514,8 +516,64 @@ class MSTeamsRecorder(BaseRecorder):
 
         self.close_mic_camera(wait=wait)
 
-        
 
+        try:
+            joined_wait = WebDriverWait(self.driver, 120)  # wait up to 2 mins
+            joined_wait.until(
+                # Wait for "Leave call" button to confirm full join
+                EC.presence_of_element_located((By.XPATH, '//button[@id="roster-button" and @aria-label="People"]'))
+            )
+            print("Successfully joined the meeting.")
+            print("Recording started.")
+            self.start_ffmpeg_recording()
+        except Exception as e:
+            print("Never joined the meeting (maybe host denied or never accepted):", e)
+            
+        try:
+            # Wait until the "People" button is present and clickable
+            people_button = WebDriverWait(self.driver, 30).until(
+                EC.element_to_be_clickable((By.XPATH, '//button[@id="roster-button" and @aria-label="People"]'))
+            )
+
+            # Scroll into view and click using JS
+            self.driver.execute_script("arguments[0].scrollIntoView(true);", people_button)
+            self.driver.execute_script("arguments[0].click();", people_button)
+            print("People button clicked successfully.")
+
+        except Exception as e:
+            print("Exception while clicking People button:", e)
+       
+    def get_participants(self):
+        try:
+            # Wait for any participant list item with role="presentation" and data-cid="roster-participant"
+            participant_items = WebDriverWait(self.driver, 10).until(
+                EC.presence_of_all_elements_located((
+                    By.XPATH,
+                    '//li[@role="presentation" and @data-cid="roster-participant"]'
+                ))
+            )
+
+            matching = []
+
+            for item in participant_items:
+                aria_label = item.get_attribute("aria-label")
+                if not aria_label:
+                    continue
+
+                # Example: "Bot User, Muted" or "John Doe, Unmuted"
+                aria_label = aria_label.strip().lower()
+
+                # Check for mute (only if "muted" is present but "unmuted" is NOT)
+                if "unmuted" in aria_label:
+                    # Extract name before the comma
+                    name = aria_label.split(',')[0].strip().title()
+                    matching.append(name)
+
+            # print("unmuted participants:", matching)
+            return matching
+
+        except Exception as e:
+            print("Error retrieving participants:", e)
         
     def leave_meeting(self):
         wait = WebDriverWait(self.driver, 15)
@@ -613,6 +671,52 @@ class ZoomMeetingRecorder(BaseRecorder):
             print("Clicked 'Join' successfully!")
         except Exception as e:
             print("Could not find 'Join' button:", e)
+
+        try:
+            action = ActionChains(self.driver)
+            action.move_by_offset(100, 100).perform()
+            time.sleep(1)
+            participants_button = WebDriverWait(self.driver, 15).until(
+                EC.element_to_be_clickable((
+                    By.XPATH,
+                    '//button[contains(@aria-label, "participants") and .//span[text()="Participants"]]'
+                ))
+            )
+            
+            # Scroll into view and click
+            self.driver.execute_script("arguments[0].scrollIntoView(true);", participants_button)
+            self.driver.execute_script("arguments[0].click();", participants_button)
+        except Exception as e:
+            print("Could not find 'Join' button:", e)
+
+    def get_participants(self):
+        try:
+            WebDriverWait(self.driver, 10).until(
+                EC.presence_of_all_elements_located((By.XPATH, '//div[contains(@class, "participants-item__item-layout")]'))
+            )
+            participants = self.driver.find_elements(By.XPATH, '//div[contains(@class, "participants-item__item-layout")]')
+            unmuted_names = []
+            for participant in participants:
+                try:
+                    # print(f"\n--- Participant ---\n{html}\n")
+                    svg_icons = participant.find_elements(By.TAG_NAME, 'svg')
+                    svg_icon =svg_icons[0] if svg_icons else None
+                    if svg_icon:
+                        svg_class = svg_icon.get_attribute("class")
+                        if "unmuted" in svg_class.lower():
+                                name_element = participant.find_element(By.XPATH, './/span[contains(@class, "participants-item__display-name")]')
+                                name = name_element.text.strip()
+                                if "(Me)" in name:
+                                    name = name.replace("(Me)", "").strip()
+                                unmuted_names.append(name)
+                except Exception as e:
+                    print("Error finding participant icon:", e)
+                    continue
+            print("Unmuted Participants:", unmuted_names)
+            return unmuted_names
+        except Exception as e:
+            print("Error while fetching unmuted participants:", e)
+            return []
 
     def leave_meeting(self):
         wait = WebDriverWait(self.driver, 15)
@@ -728,7 +832,8 @@ async def wait_for_exit(recorder, choice, stop_flag_path="/app/STOP.txt"):
 
     while not os.path.exists(stop_flag_path):
         participants = recorder.get_participants()
-        recorder.close_got_it_popup()
+        if(choice == "gmeet"):
+            recorder.close_got_it_popup()
         append_speaker_data(f"/shared/{choice}_speaker_log.json", timestamp, participants)
         timestamp = timestamp + 1
         await asyncio.sleep(1)
