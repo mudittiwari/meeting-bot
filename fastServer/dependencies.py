@@ -18,6 +18,7 @@ async def get_current_user(token: str = Depends(oauth2_scheme)):
 def create_meeting_from_request(req: ProcessRequest, user_id: str) -> Meeting:
     return Meeting(
         meeting_url=req.meeting_url,
+        meeting_slug=req.meeting_slug,
         zip_file_link="",
         user_id=user_id,
         status=MeetingStatus.in_queue)

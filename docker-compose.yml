@@ -8,6 +8,10 @@ services:
     build:
       context: ./fastServer
     container_name: fastServer
+    volumes:
+      # - ./fastServer:/app
+      - ./shared:/shared
+      - /var/run/docker.sock:/var/run/docker.sock
     # command: ["python", "consumer.py"]
     ports:
       - "7000:7000"
@@ -22,7 +26,7 @@ services:
     depends_on:
       - redis
     volumes:
-      - ./recording:/app
+      # - ./recording:/app
       - ./shared:/shared
       - /var/run/docker.sock:/var/run/docker.sock
     # user: "1039:1042"
@@ -40,7 +44,7 @@ services:
     command: >
       python3 main.py
     volumes:
-      - ./transcription:/app
+      # - ./transcription:/app
       - ./shared:/shared
     environment:
       - NVIDIA_VISIBLE_DEVICES=all

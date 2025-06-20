@@ -133,7 +133,7 @@ async def process_job(choice, url, email, meeting_id):
 
     # recorder = await asyncio.to_thread(start_recording_bot, choice, url)
     
-    await wait_for_exit(recorder, choice)
+    await wait_for_exit(recorder, choice, f"/shared/STOP_{meeting_id}.txt")
     # await asyncio.to_thread(wait_for_exit, recorder, choice)
     print("[ASYNC] Recording finished")
 

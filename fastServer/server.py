@@ -1,6 +1,7 @@
 from crud import get_user_by_email, create_Meeting
 from dependencies import get_current_user
 from fastapi import FastAPI, HTTPException, Depends
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import redis
 import json
@@ -18,6 +19,18 @@ queue_name = "recording_queue"
 app.include_router(user_router, prefix="/users", tags=["users"])
 app.include_router(meeting_router, prefix="/meetings", tags=["meetings"])
 
+origins = [
+    "http://localhost:3000",  # React dev server
+    "http://localhost:5173",  # Vite dev server (if applicable)
+]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,        
+    allow_credentials=True,
+    allow_methods=["*"],             
+    allow_headers=["*"],           
+)
+
 
 @app.get("/")
 def read_root():
@@ -34,6 +47,7 @@ async def add_job(req: ProcessRequest, current_user: dict = Depends(get_current_
         payload = {
             "choice": req.choice,
             "meeting_url": req.meeting_url,
+            "meeting_slug": req.meeting_slug,
             "email": user.email,
             "meeting_id": created_meeting.id
         }
